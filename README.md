@@ -12,7 +12,7 @@ git clone https://github.com/airavata-courses/Orenda.git
 ```
 # Setting up each micro-service
 
-## User Management
+## 1. User Management
 
 ### To access the User Management Directory
 ```
@@ -34,7 +34,7 @@ cd userManagement
 ### Execute the service
 
 
-## Data Retrieval
+## 2. Data Retrieval
 
 ### To access the Data Retrieval Directory
 ```
@@ -54,7 +54,7 @@ cd userManagement
 ### Execute the service
 
 
-## Data Modelling
+## 3. Data Modelling
 
 ### To access the Data Modelling Directory
 ```
@@ -74,7 +74,7 @@ cd userManagement
 ### Execute the service
 
 
-## Data Analysis
+## 4. Data Analysis
 
 ### To access the Data Analysis Directory
 ```
@@ -94,7 +94,7 @@ cd userManagement
 ### Execute the service
 
 
-## Session Management
+## 5. Session Management
 
 ### To access the Session Management Directory
 ```
@@ -110,6 +110,14 @@ cd userManagement
 ```
 
 ```
+### Execute the service
+
+## User Interface
+
+### Execute the service
+
+## API
+
 ### Execute the service
 
 ### Team Members:
