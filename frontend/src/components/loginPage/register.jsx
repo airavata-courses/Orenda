@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link,Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import AuthService from "./authservice";
 
 export default class SignUp extends Component {
@@ -24,9 +24,7 @@ export default class SignUp extends Component {
       password: this.state.password
     };
     AuthService.register(userData).then(res => {
-      
       if (res.status == 200) {
-       
         localStorage.setItem("userInfo", JSON.stringify(res.data.token));
         this.props.history.push("/login");
       }
@@ -36,64 +34,65 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <form>
-              <h3>Sign Up</h3>
+      <div className=" Register fullheight fullwidth">
+        <div className=" container fullheight fullwidth text-light">
+          <div className="row fullheight">
+            <div className="col">
+              <form>
+                <h3 className="text-center">Sign Up</h3>
 
-              <div className="form-group">
-                <label>First name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="First name"
-                  name="firstName"
-                  required
-                  value={this.state.firstName}
-                  onChange={this.onChange}
-                />
-              </div>
+                <div className="form-group">
+                  <label>First name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="First name"
+                    name="firstName"
+                    required
+                    value={this.state.firstName}
+                    onChange={this.onChange}
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Last name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Last name"
-                  name="lastName"
-                  required
-                  value={this.state.lastName}
-                  onChange={this.onChange}
-                />
-              </div>
+                <div className="form-group">
+                  <label>Last name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Last name"
+                    name="lastName"
+                    required
+                    value={this.state.lastName}
+                    onChange={this.onChange}
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Enter email"
-                  name="email"
-                  required
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </div>
+                <div className="form-group">
+                  <label>Email address</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter email"
+                    name="email"
+                    required
+                    value={this.state.email}
+                    onChange={this.onChange}
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Enter password"
-                  name="password"
-                  required
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              {/* <div className="form-group">
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter password"
+                    name="password"
+                    required
+                    value={this.state.password}
+                    onChange={this.onChange}
+                  />
+                </div>
+                {/* <div className="form-group">
                 <label>Security question</label>
                 <input
                   type="text"
@@ -102,17 +101,18 @@ export default class SignUp extends Component {
                   name="securityQuestion"
                 />
               </div> */}
-              <button
-                type="submit"
-                className="btn btn-primary btn-block"
-                onClick={this.register}
-              >
-                Sign Up
-              </button>
-              <p className="forgot-password text-right">
-                Already registered <Link to="/login">Sign in?</Link>
-              </p>
-            </form>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  onClick={this.register}
+                >
+                  Sign Up
+                </button>
+                <p className="forgot-password text-right">
+                  Already registered <Link to="/login">Sign in?</Link>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
