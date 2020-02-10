@@ -4,125 +4,16 @@
 
 ## Getting Started
 
-This document is a step-by-step guide to have the system up and running on your machines.
+To have the system up and running, visit this [Link](https://github.com/airavata-courses/Orenda/wiki/Orenda)
 
-### Clone the project
-```
-git clone https://github.com/airavata-courses/Orenda.git
-```
-# Setting up each micro-service
+## Documenation
 
-## 1. User Management
+To learn more about the project, visit this [Link](https://github.com/airavata-courses/Orenda/wiki/Home)
 
-### To access the User Management Directory
-```
-cd userManagement
-```
+### Developers
 
-### Pre-requisites
-```
-1. NodeJS
-2. MongoDB
-```
-### Refer the following websites for installing the pre-requisites
-```
-1. NodeJS:- https://nodejs.org/en/download/
+ [**Milan Chheta**](https://github.com/milanchheta)
 
-2. MongoDB:- https://www.mongodb.com/download-center/community
-```
+ [**Neha Nayak**](https://github.com/nmnayak)
 
-### Execute the service
-
-
-## 2. Data Retrieval
-
-### To access the Data Retrieval Directory
-```
-cd userManagement
-```
-
-### Pre-requisites
-```
-1. NodeJS
-2. MongoDB
-```
-### Refer the following websites for installing the pre-requisites:
-```
-
-```
-
-### Execute the service
-
-
-## 3. Data Modelling
-
-### To access the Data Modelling Directory
-```
-cd userManagement
-```
-
-### Pre-requisites
-```
-1. NodeJS
-2. MongoDB
-```
-### Refer the following websites for installing the pre-requisites
-```
-
-```
-
-### Execute the service
-
-
-## 4. Data Analysis
-
-### To access the Data Analysis Directory
-```
-cd userManagement
-```
-
-### Pre-requisites
-```
-1. NodeJS
-2. MongoDB
-```
-### Refer the following websites for installing the pre-requisites
-```
-
-```
-
-### Execute the service
-
-
-## 5. Session Management
-
-### To access the Session Management Directory
-```
-cd userManagement
-```
-
-### Pre-requisites
-```
-1. NodeJS
-2. MongoDB
-```
-### Refer the following websites for installing the pre-requisites
-```
-
-```
-### Execute the service
-
-## User Interface
-
-### Execute the service
-
-## API
-
-### Execute the service
-
-### Team Members:
-Milan Chheta 
-
-Neha Nayak 
-
-Disha Talreja 
+ [**Disha Talreja**](https://github.com/DishaTalreja3)
