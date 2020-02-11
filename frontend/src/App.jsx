@@ -18,10 +18,10 @@ export default class  App extends React.Component{
    
       <Switch>
       <Route path="/forget"  render={props => <Forget {...props} />}/>
-      <Route path="/dashboard/submittask"  render={props => <SubmitTask {...props} />}/>
+      <Route path="/dashboard/submittask/:userId"  render={props => <SubmitTask {...props} />}/>
       <Route path="/login"  render={props => <SignIn {...props} />}/>
       <Route path="/register"  render={props => <SignUp {...props} />}/>
-      <Route path="/dashboard/session"  render={props => <SessionView {...props} />}/>
+      <Route path="/dashboard/session/:userId"  render={props => <SessionView {...props} />}/>
        
         <Route path="/">
         <Redirect to="/login" />

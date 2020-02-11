@@ -33,12 +33,13 @@ selectedStn:'',
 
   }
   componentDidMount(){
-    if(localStorage.getItem('userInfo')){
+if (localStorage.getItem('userInfo')){
+   
       this.setState({
         userID: jwt_decode(localStorage.getItem('userInfo')).user.id
       });
    
-    }
+    
     var statn=[]
     var label=''
     var value=''
@@ -53,6 +54,9 @@ selectedStn:'',
       stn: statn
     });
   }
+else{
+  this.props.history.push('/')
+}}
   handleStnChange = stn => { console.log(stn) 
     this.setState({selectedStn:stn,selectedStnVal:stn['value']})}
 
@@ -114,11 +118,11 @@ dashService.submitTask(data).then(res => {
             </div>
           </div>{" "}
        
-          <div className="row">
-            <div className="col-3">
+          <div className="row ">
+            <div className="col ">
               <Select
                 name="stations"
-                
+           
                 options={this.state.stn}
                 onChange={val => this.handleStnChange(val)}
                 value={this.state.selectedStn}

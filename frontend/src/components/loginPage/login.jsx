@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import AuthService from "./authservice";
 import "./login.css";
+import jwt_decode from "jwt-decode";
 
 export default class SignIn extends React.Component {
   constructor(props) {
@@ -13,7 +14,18 @@ export default class SignIn extends React.Component {
     };
     this.login = this.login.bind(this);
   }
+  componentDidMount() {
+    try{
+    if (localStorage.getItem("userInfo")) {
+      console.log(localStorage.getItem("userInfo"))
+    } else {
+      this.props.history.push("/dashboard/submittask/" + jwt_decode(localStorage.getItem("userInfo")));
+    }}
+    catch(e){
+      
 
+    }
+  }
   login = async e => {
     e.preventDefault();
     const credentials = {
@@ -22,8 +34,9 @@ export default class SignIn extends React.Component {
     };
     AuthService.login(credentials).then(res => {
       if (res.status === 200) {
-        localStorage.setItem("userInfo", JSON.stringify(res.data.token));
-        this.props.history.push("/dashboard/submittask");
+        let token = JSON.stringify(res.data.token);
+        localStorage.setItem("userInfo", token);
+        this.props.history.push("/dashboard/submittask/" + jwt_decode(token));
       }
     });
   };
