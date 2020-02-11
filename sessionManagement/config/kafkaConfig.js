@@ -4,7 +4,7 @@ client = new kafka.KafkaClient();
 consumer = new Consumer(
   client,
   [
-    { topic: 'sessionManagementConsumer', partition: 0, offset: 0 }
+    { topic: 'sessionManagementConsumerF', partition: 0, offset: 0 }, { topic: 'sessionManagementConsumerApiF', partition: 0, offset: 0 }
   ],
   {
     autoCommit: false,

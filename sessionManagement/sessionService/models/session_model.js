@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 
 
 var sessionSchema = new mongoose.Schema({
-  sessionID: {
+  uid: {
     type: String,
     required: true
   },
@@ -11,12 +11,12 @@ var sessionSchema = new mongoose.Schema({
     required: true
    
   },
-  inputfile: {
-    type: String
+  inputData: {
+    type: JSON
   },
-  outputfile: {
+  outputData: {
     type: String
   }
 });
 
-module.exports = mongoose.model('sessionDetails', sessionSchema);
+module.exports = mongoose.model('sessiondetails', sessionSchema);

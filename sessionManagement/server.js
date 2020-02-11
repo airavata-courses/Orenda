@@ -20,28 +20,12 @@ app.listen(process.env.PORT, () => {
 InitiateMongoServer();
 
 consumer.on('message', function(message) {
-    if (message.topic == 'apiGatewayConsumer') {
-      procData.sendAnalysis(message,message.topic)
-      procData.sendRetrieval(message,message.topic)
-
-        //store sessionID, email, input
-        // let session = new Session(JSON.parse(message.value));
-        // session.save(function (err, data) {
-        //   if (err) return console.error(err);
-        //   console.log("Saved Data: ",data);
-        // });
-      // console.log(message.value);
-      // value = JSON.parse(message.value);
-      // console.log(value);
-    } else if (message.topic == 'dataRetrievalConsumer') {
-      procData.storeInput(message,message.topic)
-
-      //look for sessionID and put outputfile
-    } else if (message.topic == 'dataAnalysisConsumer') {
-      procData.storeOutput(message,message.topic)
-
-      //look for email and render all results
-     
   
+    if (message.topic == 'sessionManagementConsumerF') {
+      procData.storeData(message)
+  
+    } else if (message.topic == 'sessionManagementConsumerApiF') {
+      procData.retrieveData(message)
+
     }
   });
