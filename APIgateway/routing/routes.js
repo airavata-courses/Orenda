@@ -1,12 +1,20 @@
 
 
 module.exports = function(app) {
+        
         let task = require("./eventHandler");
         const uuidv1 = require('uuid/v1');
 
-        app.get("/session",function( req,res){
+        app.post("/session",function( req,res){
 
+                let uid=uuidv1()
+                msg=req.body
+                id=msg['userID']
+               
+                resID[uid]=res
+                let data={"uid":uid,'userID':id}
 
+                task.produce(data,'sessionManagementConsumerApiF')
         });
 
         app.post("/task",function( req,res){
@@ -14,11 +22,11 @@ module.exports = function(app) {
                 let uid=uuidv1()
                 msg=req.body
                 id=msg['userID']
-                let data={"data":msg,"uid":uid,'userID':id}
-                console.log(data,msg)
-                resID[uid]=res
+                let data={"inputData":msg['inputData'],"uid":uid,'userID':id}
+               
+                // resID[uid]=res
                 
-                task.submitTask(data)
+                task.produce(data,'dataRetrievalConsumerF')
 
         });
 

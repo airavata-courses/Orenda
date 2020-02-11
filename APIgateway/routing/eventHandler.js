@@ -1,12 +1,12 @@
 const producer=require('../config/kafkaConfig').producer
 
-exports.submitTask = async function login(req, res, next) {
+ function produce(msg,topic) {
 
-msg=JSON.stringify(req)
+msg=JSON.stringify(msg)
 return new Promise((resolve,reject)=>{
     let payloads = [
         {
-        topic: 'dataRetrievalConsumer1',
+        topic: topic,
         messages: msg
         }
     ]
@@ -14,10 +14,13 @@ return new Promise((resolve,reject)=>{
         if (error) {
             console.log(error)
             reject(error)
-        } else {
-        console.log('sent')
+        } else {  
+        console.log('produced')
+       
         resolve(data)
         }
     })
 })
 }
+
+module.exports = { produce };

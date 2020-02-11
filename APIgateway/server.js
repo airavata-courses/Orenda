@@ -17,19 +17,27 @@ app.use(cors());
 
 require("./routing/routes")(app);
 // var topicsToCreate = [{
-//   topic: 'apiGatewayConsumer2',
-//   partitions: 1,
-//   replicationFactor: 1}]
-// },{
-//   topic: 'dataRetrievalConsumer1',
+//   topic: 'apiGatewayConsumerF',
 //   partitions: 1,
 //   replicationFactor: 1
 // },{
-//   topic: 'dataModellingConsumer1',
+//   topic: 'dataRetrievalConsumerF',
 //   partitions: 1,
 //   replicationFactor: 1
 // },{
-//   topic: 'dataAnalysisConsumer1',
+//   topic: 'dataModellingConsumerF',
+//   partitions: 1,
+//   replicationFactor: 1
+// },{
+//   topic: 'dataAnalysisConsumerF',
+//   partitions: 1,
+//   replicationFactor: 1
+// },{
+//   topic: 'sessionManagementConsumerF',
+//   partitions: 1,
+//   replicationFactor: 1
+// },{
+//   topic: 'sessionManagementConsumerApiF',
 //   partitions: 1,
 //   replicationFactor: 1
 // }]
@@ -41,10 +49,15 @@ app.listen(process.env.PORT, () => {
 });
 
 consumer.on('message', (message)=>{
-console.log(message,'consume')
   let data=JSON.parse(message.value)
+
   let uid=String(data['uid'])
-  if(resID[uid]){resID[uid].send(data['data'])}
+  console.log(data)
+  if(resID[uid]){
+    console.log('sending response')
+    resID[uid].send(data)}
+
+  
 
 })
 consumer.on('error', (error)=>{

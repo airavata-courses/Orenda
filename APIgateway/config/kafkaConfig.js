@@ -6,7 +6,7 @@ const client = new kafka.KafkaClient()
     producer = new Producer(client);
     consumer = new Consumer(
         client,
-        [{ topic: 'apiGatewayConsumer2', offset:0, partition: 0 }],
+        [{ topic: 'apiGatewayConsumerF', offset:0, partition: 0 }],
         {
           autoCommit: true,
           encoding: 'utf8',
