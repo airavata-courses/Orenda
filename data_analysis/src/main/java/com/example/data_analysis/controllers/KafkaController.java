@@ -1,12 +1,14 @@
-package com.example.dataAnalysis.controllers;
+package com.example.data_analysis.controllers;
+
+
+
+import com.example.data_analysis.engine.Producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.dataAnalysis.engine.Producer;
 
 @RestController
 @RequestMapping(value = "/kafka")

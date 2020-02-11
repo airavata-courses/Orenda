@@ -1,10 +1,10 @@
-package com.example.dataAnalysis;
+package com.example.data_analysis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DataAnalysisApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {

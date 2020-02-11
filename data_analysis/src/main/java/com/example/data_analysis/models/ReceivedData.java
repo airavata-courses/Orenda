@@ -1,4 +1,4 @@
-package com.example.dataAnalysis.models;
+package com.example.data_analysis.models;
 
 public class ReceivedData {
 	
@@ -7,3 +7,4 @@ public class ReceivedData {
 	String userId;
 
 }
+
