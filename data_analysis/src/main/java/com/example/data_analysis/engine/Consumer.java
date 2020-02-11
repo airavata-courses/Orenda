@@ -2,6 +2,7 @@ package com.example.data_analysis.engine;
 
 import java.io.IOException;
 
+import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -13,13 +14,13 @@ import com.example.data_analysis.engine.Producer;
 
 @Service
 public class Consumer {
-	private final Logger logger = LoggerFactory.getLogger(Producer.class);
+    private final Logger logger = LoggerFactory.getLogger(Producer.class);
 
-    @KafkaListener(topics = "dataAnalysisConsumer1", groupId = "test-consumer-group")
+    @KafkaListener(topics = "dataAnalysisConsumerF", groupId = "test-consumer-group")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
         // ImageUpload.main(message);
-        DemoApplication.producer.sendMessage("message from producer: " + message);
+        DemoApplication.producer.sendMessage(message);
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class Producer {
 
 	private static final Logger logger = LoggerFactory.getLogger(Producer.class);
-    private static final String TOPIC = "apiGatewayConsumer2";
+    private static final String TOPIC = "sessionManagementConsumerF";
 
     @Autowired
     private  KafkaTemplate<String, String> kafkaTemplate;
@@ -17,6 +17,6 @@ public class Producer {
     public  void sendMessage(String message) {
         System.out.println("" + kafkaTemplate);
         logger.info(String.format("######################## -> Producing message -> %s", message));
-        kafkaTemplate.send(TOPIC, "{'new':'message'}");
+        kafkaTemplate.send(TOPIC, message);
     }
 }

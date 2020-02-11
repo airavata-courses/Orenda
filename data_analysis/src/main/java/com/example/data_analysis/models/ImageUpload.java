@@ -28,9 +28,9 @@ public static void main(String message) throws FileNotFoundException, IOExceptio
         MongoDatabase database= cl.getDatabase("FileUploadDB");
         GridFSBucket gridFSBucket = GridFSBuckets.create(database);
         
-        uploadData(gridFSBucket, new ByteArrayInputStream(rD.resultPlot.getBytes(StandardCharsets.UTF_8)), "result-plot.jpg");
-        uploadData(gridFSBucket, new ByteArrayInputStream(rD.uid.getBytes(StandardCharsets.UTF_8)), "uid");
-        uploadData(gridFSBucket, new ByteArrayInputStream(rD.userId.getBytes(StandardCharsets.UTF_8)), "user-id");
+        // uploadData(gridFSBucket, new ByteArrayInputStream(rD.resultPlot.getBytes(StandardCharsets.UTF_8)), "result-plot.jpg");
+        // uploadData(gridFSBucket, new ByteArrayInputStream(rD.uid.getBytes(StandardCharsets.UTF_8)), "uid");
+        // uploadData(gridFSBucket, new ByteArrayInputStream(rD.userId.getBytes(StandardCharsets.UTF_8)), "user-id");
         cl.close();
     }
 	
