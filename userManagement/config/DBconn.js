@@ -7,16 +7,11 @@ const dbPath =
   process.env.DB_PASS +
   "@cluster0-389i7.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.connect(dbPath, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: "orendaDB"
-});
-
 
 const InitiateMongoServer = async () => {
     try {
+      console.log("Connecting to DB !!");
+
       await mongoose.connect(dbPath, {
         useCreateIndex: true,
         useNewUrlParser: true,
