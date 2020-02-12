@@ -8,6 +8,7 @@ import Select from 'react-select';
 import { Button } from 'react-bootstrap';
 import dashService from './dashboardservice';
 import jwt_decode from 'jwt-decode';
+import './dashboard.css';
 
 export default class SubmitTask extends Component {
   constructor(props) {
@@ -82,27 +83,26 @@ export default class SubmitTask extends Component {
   submitTask = e => {
     e.preventDefault();
 
-var data = {
+    var data = {
+      inputData: {
+        Year: this.state.Year,
+        Month: this.state.Month,
+        Day: this.state.Day,
+        Radar: this.state.selectedStnVal
+      },
+      userID: this.state.userID
+    };
+    console.log(data);
+    dashService.submitTask(data).then(res => {
+      if (res.status === 200) {
+        console.log(res);
+      }
+    });
+  };
 
-  "inputData":{
-  "Year": this.state.Year,
-  "Month": this.state.Month,
-  "Day": this.state.Day,
-  "Radar": this.state.selectedStnVal,
-  },
-  userID:this.state.userID
-
-};
-console.log(data)
-dashService.submitTask(data).then(res => {
-  if (res.status === 200) {
-    console.log(res)
-  }
-});
-}
   render() {
     return (
-      <div className='mt-5 p-4 '>
+      <div className='Dashboard mt-5 p-4 full-width-div'>
         <DashNav />
         {this.state.errDate}
         <center>
@@ -116,7 +116,11 @@ dashService.submitTask(data).then(res => {
             </div>
             <div className='row mt-5'>
               <div className='col'>
-                <b>Select a date</b>
+                <div>
+                  <b>
+                    <font size='5'>Select a date</font>
+                  </b>
+                </div>
                 <DatePicker
                   selected={this.state.selectedDate}
                   onChange={this.handleDateChange}
@@ -126,7 +130,9 @@ dashService.submitTask(data).then(res => {
             </div>{' '}
             <div className='row mt-5 '>
               <div className='col '>
-                <b>Select a location</b>
+                <b>
+                  <font size='5'>Select a location</font>
+                </b>
                 <Select
                   data-size='5'
                   data-width='fit'
@@ -138,9 +144,50 @@ dashService.submitTask(data).then(res => {
               </div>
             </div>{' '}
           </div>{' '}
-          <Button variant='primary' onClick={this.submitTask}>
-            Validate And Submit
-          </Button>
+          <div className='row mt-4 '>
+            <div className='col '>
+              <Button
+                variant='primary'
+                onClick={this.submitTask}
+                data-toggle='modal'
+                data-target='#myModal'
+              >
+                Validate And Submit
+              </Button>
+            </div>
+          </div>
+          <div class='modal fade' id='myModal' role='dialog'>
+            <div class='modal-dialog'>
+              <div class='modal-content'>
+                <div class='modal-header'>
+                  <button
+                    type='button'
+                    class='close'
+                    data-dismiss='modal'
+                  ></button>
+
+                  <h4 class='modal-title'>Your request is being processed</h4>
+                </div>
+                <div class='modal-body'>
+                  <p>
+                    <h6>
+                      You can view the desired forecast in the SESSION tab in a
+                      while
+                    </h6>
+                  </p>
+                </div>
+                <div class='modal-footer'>
+                  <button
+                    type='button'
+                    class='btn btn-default'
+                    data-dismiss='modal'
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </center>
       </div>
     );

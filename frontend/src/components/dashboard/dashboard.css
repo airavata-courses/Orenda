@@ -5,3 +5,16 @@ min-width:216px ;
 min-height: 214px;
 
 }
+.Dashboard {
+  background-image: url('./IMG_3628.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.full-width-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
