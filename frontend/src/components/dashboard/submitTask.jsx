@@ -89,11 +89,15 @@ submitTask=e=>{
 e.preventDefault();
 
 var data = {
-  Year: this.state.Year,
-  Month: this.state.Month,
-  Day: this.state.Day,
-  Radar: this.state.selectedStnVal,
+
+  "inputData":{
+  "Year": this.state.Year,
+  "Month": this.state.Month,
+  "Day": this.state.Day,
+  "Radar": this.state.selectedStnVal,
+  },
   userID:this.state.userID
+
 };
 console.log(data)
 dashService.submitTask(data).then(res => {

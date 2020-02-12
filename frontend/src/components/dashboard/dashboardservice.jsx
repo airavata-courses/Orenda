@@ -7,6 +7,9 @@ class dashService {
     submitTask(data){
         return axios.post(USER_API_BASE_URL + "task", data);
     }
+    sessions(data){
+        return axios.post(USER_API_BASE_URL + "session", data);
+    }
 
     
 }
