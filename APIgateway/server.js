@@ -53,9 +53,14 @@ consumer.on('message', (message)=>{
 
   let uid=String(data['uid'])
   console.log(data)
-  if(resID[uid]){
+  if(resID[uid] && resID[uid]!=null){
     console.log('sending response')
-    resID[uid].send(data)}
+    ob=resID[uid]
+    resID[uid]=null
+    delete resID["uid"];
+  
+    ob.send(data)
+  }
 
   
 
