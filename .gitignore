@@ -312,6 +312,10 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/develop
 
 # parcel-bundler cache (https://parceljs.org/)
 
