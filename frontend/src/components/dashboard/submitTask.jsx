@@ -120,6 +120,7 @@ dashService.submitTask(data).then(res => {
                 <DatePicker
                   selected={this.state.selectedDate}
                   onChange={this.handleDateChange}
+                  
                 />
               </div>
             </div>{' '}
