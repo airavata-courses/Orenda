@@ -12,11 +12,16 @@ var sessionSchema = new mongoose.Schema({
    
   },
   inputData: {
-    type: JSON
+    type: JSON,
+    required: true
   },
   outputData: {
     type: String
+  },
+  taskState:{
+    type: String,
+    default:'None'
   }
 });
-
+sessionSchema.set('timestamps', true);
 module.exports = mongoose.model('sessiondetails', sessionSchema);

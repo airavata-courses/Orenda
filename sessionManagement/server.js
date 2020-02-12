@@ -22,10 +22,18 @@ InitiateMongoServer();
 consumer.on('message', function(message) {
   
     if (message.topic == 'sessionManagementConsumerF') {
-      procData.storeData(message)
+      procData.updateData(message)
   
     } else if (message.topic == 'sessionManagementConsumerApiF') {
       procData.retrieveData(message)
 
-    }
+    
+  } else if (message.topic == 'dataRetrievalConsumerF') {
+    procData.createData(message)
+
+  }
+  else if (message.topic == 'dataModellingConsumerF') {
+    procData.updateState(message)
+
+  }
   });

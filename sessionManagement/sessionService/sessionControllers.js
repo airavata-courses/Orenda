@@ -1,8 +1,7 @@
 var Session = require("./models/session_model");
 const producer = require("../config/kafkaConfig").producer;
 
-
-async function storeData(msg) {
+async function createData(msg) {
   let data = JSON.parse(msg.value);
   try {
     session = new Session(data);
@@ -12,7 +11,38 @@ async function storeData(msg) {
   } catch (err) {
     console.log(err.message);
   }
+  
+}
+async function updateState(msg) {
+  let data = JSON.parse(msg.value);
+  try {
+ 
+    console.log(data);
+    filter={"uid":data["uid"]}
+    update={"taskState":"executing"}
+    let session = await Session.updateOne(filter, update,{new:true});
 
+    
+  } catch (err) {
+    console.log(err.message);
+  }
+  
+}
+
+ async function updateData(msg) {
+  let data = JSON.parse(msg.value);
+  try {
+    console.log(data);
+    filter={"uid":data["uid"]}
+    update={"outputData":data["outputData"],"taskState":"executed"}
+    let session = await Session.updateOne(filter, update,{new:true});
+
+   
+    
+
+  } catch (err) {
+    console.log(err.message);
+  }
 }
 
 async function retrieveData(msg) {
@@ -23,6 +53,7 @@ async function retrieveData(msg) {
     data={"sessions":documents,
       "userID":data['userID'],
       "uid":data['uid']
+
       
     }
     console.log('retrieved',data);
@@ -30,6 +61,7 @@ async function retrieveData(msg) {
   });
   
 }
+
 
 function sendData(msg, topicName) {
   msg = JSON.stringify(msg);
@@ -47,4 +79,4 @@ function sendData(msg, topicName) {
     }
   });
 }
-module.exports = { storeData, retrieveData };
+module.exports = { updateData, retrieveData, createData,updateState };
