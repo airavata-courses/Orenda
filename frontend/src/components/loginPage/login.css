@@ -13,7 +13,7 @@ body {
   margin: auto;
 }
 .Login {
-  background-image: url("./weather.jpg");
+  background-image: url('./weather.jpg');
   background-size: cover;
 }
 .fullwidth {
@@ -29,7 +29,7 @@ body {
 }
 
 .Register {
-  background-image: url("./weather.jpg");
-  
+  background-image: url('./weather.jpg');
+
   background-size: cover;
 }
