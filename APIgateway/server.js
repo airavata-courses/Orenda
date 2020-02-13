@@ -42,7 +42,7 @@ var topicsToCreate = [{
   replicationFactor: 1
 }]
 client.createTopics(topicsToCreate, (error, result) => {
-  console.log(result)
+  // console.log(result)
 });
 const consumer=require('./config/kafkaConfig').consumer
 
@@ -60,11 +60,11 @@ consumer.on('message', (message)=>{
     ob=resID[uid]
     resID[uid]=null
     delete resID["uid"];
-  
+
     ob.send(data)
   }
 
-  
+
 
 })
 consumer.on('error', (error)=>{
