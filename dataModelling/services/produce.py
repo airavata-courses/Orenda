@@ -40,9 +40,9 @@ def produce(data,conn,client):
         
         plt.close(fig)
         
-        # uploadImage = im.upload_image(plotName, title="Uploaded with PyImgur")
-        # link=str(uploadImage.link)
-        link=''
+        uploadImage = im.upload_image(plotName, title="Uploaded with PyImgur")
+        link=str(uploadImage.link)
+        # link=''
         body={  "inputData":data["inputData"],
                 "outputData":link,
                 "uid":data["uid"],
