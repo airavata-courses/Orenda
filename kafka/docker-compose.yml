@@ -23,6 +23,6 @@ services:
                             dataRetrievalConsumerF:1:1,
                             dataModellingConsumerF:1:1,
                             dataAnalysisConsumerF:1:1,
-                            sessionManagementConsumerF1:1,
+                            sessionManagementConsumerF:1:1,
                             sessionManagementConsumerApiF:1:1,
                           "
