@@ -13,9 +13,7 @@ consumer =  client.topics['dataRetrievalConsumerF'].get_simple_consumer(consumer
 
 for message in consumer:
     if message is not None:
-        print(message.value)
         data=json.loads((message.value))
-        print((json.dumps(data)))
         produce(data,client)
         
        

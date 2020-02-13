@@ -5,7 +5,6 @@ async function createData(msg) {
   let data = JSON.parse(msg.value);
   try {
     session = new Session(data);
-    console.log(data);
 
     await session.save();
   } catch (err) {
@@ -17,7 +16,6 @@ async function updateState(msg) {
   let data = JSON.parse(msg.value);
   try {
  
-    console.log(data);
     filter={"uid":data["uid"]}
     update={"taskState":"executing"}
     let session = await Session.updateOne(filter, update,{new:true});
@@ -32,7 +30,6 @@ async function updateState(msg) {
  async function updateData(msg) {
   let data = JSON.parse(msg.value);
   try {
-    console.log(data);
     filter={"uid":data["uid"]}
     update={"outputData":data["outputData"],"taskState":"executed"}
     let session = await Session.updateOne(filter, update,{new:true});
@@ -47,7 +44,6 @@ async function updateState(msg) {
 
 async function retrieveData(msg) {
   let data = JSON.parse(msg.value);
-  console.log('retrieved');
   let sessions= Session.find({'userID': data['userID']}, function(err, documents) {
     
     data={"sessions":documents,
@@ -56,7 +52,6 @@ async function retrieveData(msg) {
 
       
     }
-    console.log('retrieved',data);
     sendData(data, 'apiGatewayConsumerF');
   });
   
@@ -74,9 +69,7 @@ function sendData(msg, topicName) {
   producer.send(payloads, (error, data) => {
     if (error) {
       console.log(error);
-    } else {
-      console.log("sent new");
-    }
+    } 
   });
 }
 module.exports = { updateData, retrieveData, createData,updateState };

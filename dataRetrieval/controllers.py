@@ -13,7 +13,6 @@ def produce(data,client):
     userID=data['userID']
     uid=data['uid']
     res=return_regions(Month,Day,Year,Radar)
-    print(res)
     if(res=='success'):
         body = {"inputData":{"Month":Month,"Day":Day,"Year":Year,"Radar":Radar},"userID":userID,"uid":uid}
   
