@@ -16,20 +16,9 @@ def produce(data,client):
     print(res)
     if(res=='success'):
         body = {"inputData":{"Month":Month,"Day":Day,"Year":Year,"Radar":Radar},"userID":userID,"uid":uid}
-        # print(bytes(json.dumps(body),'utf-8'))
-        # 
-        
-       
-   
-        
+  
         with (client.topics['dataModellingConsumerF']).get_sync_producer() as producer:
             producer.produce((bytes(json.dumps(body),'utf-8')))
 
-       
-    # else:
-    #     with (client.topics['apiGatewayConsumer']).get_sync_producer() as producer:
-    #         producer.produce(msg)
-      
-    else:
-        print('error')
+    
 
