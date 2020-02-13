@@ -54,9 +54,9 @@ consumer.on('message', (message)=>{
   let data=JSON.parse(message.value)
 
   let uid=String(data['uid'])
-  console.log(data)
+
   if(resID[uid] && resID[uid]!=null){
-    console.log('sending response')
+
     ob=resID[uid]
     resID[uid]=null
     delete resID["uid"];

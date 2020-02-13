@@ -54,7 +54,6 @@ export default class SubmitTask extends Component {
     }
   }
   handleStnChange = stn => {
-    console.log(stn);
     this.setState({ selectedStn: stn, selectedStnVal: stn['value'] });
   };
 
@@ -92,10 +91,8 @@ export default class SubmitTask extends Component {
       },
       userID: this.state.userID
     };
-    console.log(data);
     dashService.submitTask(data).then(res => {
       if (res.status === 200) {
-        console.log(res);
       }
     });
   };

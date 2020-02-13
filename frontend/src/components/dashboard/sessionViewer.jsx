@@ -20,10 +20,8 @@ export default class SessionView extends Component {
         userID: jwt_decode(localStorage.getItem("userInfo")).user.id
       };
       dashService.sessions(data).then(res => {
-        console.log(res)
         if (res.status === 200) {
           this.setState({ sessions: res.data.sessions });
-          console.log(this.state.sessions);
         }
       });
     } else {
@@ -32,7 +30,6 @@ export default class SessionView extends Component {
   }
 
   render() {
-    console.log(this.state.sessions)
     return (
       <div>
         <DashNav />
