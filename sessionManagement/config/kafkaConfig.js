@@ -10,8 +10,7 @@ consumer = new Consumer(
     { topic: "dataRetrievalConsumerF", partition: 0, offset: 0 }
   ],
   {
-    autoCommit: false,
-    fromOffset: true
+    autoCommit: true
   }
 );
 

@@ -17,7 +17,6 @@ export default class SignIn extends React.Component {
   componentDidMount() {
     try{
     if (localStorage.getItem("userInfo")) {
-      console.log(localStorage.getItem("userInfo"))
     } else {
       this.props.history.push("/dashboard/submittask/" + jwt_decode(localStorage.getItem("userInfo")));
     }}

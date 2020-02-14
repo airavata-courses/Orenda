@@ -15,7 +15,6 @@ return new Promise((resolve,reject)=>{
             console.log(error)
             reject(error)
         } else {  
-        console.log('produced')
        
         resolve(data)
         }

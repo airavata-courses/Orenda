@@ -54,7 +54,6 @@ export default class SubmitTask extends Component {
     }
   }
   handleStnChange = stn => {
-    console.log(stn);
     this.setState({ selectedStn: stn, selectedStnVal: stn['value'] });
   };
 
@@ -92,10 +91,8 @@ export default class SubmitTask extends Component {
       },
       userID: this.state.userID
     };
-    console.log(data);
     dashService.submitTask(data).then(res => {
       if (res.status === 200) {
-        console.log(res);
       }
     });
   };
@@ -156,19 +153,15 @@ export default class SubmitTask extends Component {
               </Button>
             </div>
           </div>
-          <div class='modal fade' id='myModal' role='dialog'>
-            <div class='modal-dialog'>
-              <div class='modal-content'>
-                <div class='modal-header'>
-                  <button
-                    type='button'
-                    class='close'
-                    data-dismiss='modal'
-                  ></button>
+          <div className='modal fade' id='myModal' role='dialog'>
+            <div className='modal-dialog'>
+              <div className='modal-content'>
+                <div className='modal-header'>
+                  
 
-                  <h4 class='modal-title'>Your request is being processed</h4>
+                  <h4 className='modal-title '>Your request is being processed</h4>
                 </div>
-                <div class='modal-body'>
+                <div className='modal-body'>
                   <p>
                     <h6>
                       You can view the desired forecast in the SESSION tab in a
@@ -176,10 +169,10 @@ export default class SubmitTask extends Component {
                     </h6>
                   </p>
                 </div>
-                <div class='modal-footer'>
+                <div className='modal-footer m-auto'>
                   <button
                     type='button'
-                    class='btn btn-default'
+                    className='btn btn-danger'
                     data-dismiss='modal'
                   >
                     Close
