@@ -16,7 +16,7 @@ export default class  App extends React.Component{
   return (
     <Router>
    
-      <Switch>
+      <Switch basename="/">
       <Route path="/forget"  render={props => <Forget {...props} />}/>
       <Route path="/dashboard/submittask/:userId"  render={props => <SubmitTask {...props} />}/>
       <Route path="/login"  render={props => <SignIn {...props} />}/>
