@@ -4,7 +4,6 @@ certifi==2019.11.28
 chardet==3.0.4
 Click==7.0
 dnspython==1.16.0
-docutils==0.15.2
 Flask==1.1.1
 flask-kafka==0.0.2
 flask-mongoengine==0.9.5

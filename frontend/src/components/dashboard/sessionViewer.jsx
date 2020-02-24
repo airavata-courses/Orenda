@@ -22,7 +22,6 @@ export default class SessionView extends Component {
       dashService.sessions(data).then(res => {
         if (res.status === 200) {
           this.setState({ sessions: res.data.sessions });
-          console.log(this.state.sessions);
         }
       });
     } else {
@@ -65,7 +64,7 @@ class SessionCard extends Component {
         
        <Card style={{ width: '18rem' }}>
 
-       {this.props.session.outputData && <Card.Img className='sessionCardImg' variant="top" src={this.props.session.outputData} href={this.props.session.outputData}/>}
+       {this.props.session.outputData && <Card.Img className='sessionCardImg m-auto' variant="top" src={this.props.session.outputData} href={this.props.session.outputData}/>}
        {!this.props.session.outputData && <Card.Img className='sessionCardImg' variant="top" src={notFound} href={this.props.session.outputData}/>}
   <Card.Body className='text-center text-primary'>
     <Card.Title>{'Station Name - '+this.props.session.inputData.Radar}</Card.Title>
