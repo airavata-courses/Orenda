@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 require("./routing/routes")(app);
 
-app.listen(process.env.PORT, () => {
+app.listen(config.PORT, () => {
   console.log("gateway listening on port " + config.PORT);
 });
 
