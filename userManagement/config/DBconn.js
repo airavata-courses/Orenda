@@ -1,30 +1,25 @@
 let mongoose = require("mongoose");
-
+let config = require("./config");
 const dbPath =
   "mongodb+srv://" +
-  process.env.DB_USER +
+  config.DATABASE.USERNAME +
   ":" +
-  process.env.DB_PASS +
-  "@cluster0-389i7.mongodb.net/test?retryWrites=true&w=majority";
-
+  config.DATABASE.PASSWORD +
+  config.DATABASE.CLUSTER ;
 
 const InitiateMongoServer = async () => {
-    try {
-      console.log("Connecting to DB !!");
-
-      await mongoose.connect(dbPath, {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        dbName: "orendaDB"
-      })
-      console.log("Connected to DB !!");
-    } catch (e) {
-      console.log(e);
-      throw e;
-    }
-  };
-  
+  try {
+    await mongoose.connect(dbPath, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: config.DATABASE.NAME
+    });
+    console.log("Connected to DB !!");
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};
 
 module.exports = InitiateMongoServer;
-
