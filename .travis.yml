@@ -7,9 +7,9 @@ matrix:
         - cd dataModelling
         - source venv/bin/activate
       install:
-        - pip intall -r requirements.txt
+        - pip install -r requirements.txt
       script:
-        - ytest
+        - pytest
 
     #dataRetrieval
     - language: python
@@ -18,7 +18,7 @@ matrix:
         - cd dataModelling
         - source venv/bin/activate
       install:
-        - pip intall -r requirements.txt
+        - pip install -r requirements.txt
       script:
         - pytest
 
@@ -28,7 +28,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd userManagement
-        - npm intall
+        - npm install
       script: -npm test
 
     #sessionManagement
@@ -37,7 +37,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd sessionManagement
-        - npm intall
+        - npm install
       script: -npm test
 
     #apiGateway
@@ -46,7 +46,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd APIgateway
-        - npm intall
+        - npm install
       script: -npm test
 
     #frontend
@@ -55,7 +55,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd frontend
-        - npm intall
+        - npm install
       script: -npm test
     # #dataAnalysis
     # - language: python
