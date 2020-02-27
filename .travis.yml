@@ -7,20 +7,20 @@ matrix:
         - cd dataModelling
         - source venv/bin/activate
       install:
-        - pip3 install -r requirements.txt
+        - pip install -r requirements.txt
       script:
-        - pytest
+        - python3 app.py
 
     #dataRetrieval
     - language: python
       python: 3.7
       before-install:
-        - cd dataModelling
+        - cd dataRetrieval
         - source venv/bin/activate
       install:
-        - pip3 install -r requirements.txt
+        - pip install -r requirements.txt
       script:
-        - pytest
+        - python3 app.py
 
     #userManagement
     - language: node_js
@@ -30,7 +30,7 @@ matrix:
         - cd userManagement
         - npm install
       script: 
-        - npm test
+        - npm start
 
     #sessionManagement
     - language: node_js
@@ -40,7 +40,7 @@ matrix:
         - cd sessionManagement
         - npm install
       script: 
-        - npm test
+        - npm start
 
     #apiGateway
     - language: node_js
@@ -50,7 +50,7 @@ matrix:
         - cd APIgateway
         - npm install
       script: 
-        - npm test
+        - npm start
 
     #frontend
     - language: node_js
@@ -60,7 +60,7 @@ matrix:
         - cd frontend
         - npm install
       script: 
-        - npm test
+        - npm start
     # #dataAnalysis
     # - language: python
     #   python:
