@@ -61,12 +61,14 @@ matrix:
         - npm install
       script: 
         - npm start
-    # #dataAnalysis
-    # - language: python
-    #   python:
-    #   before-script:
-    #     - cd dataModelling
-    #     - source venv/bin/activate
-    #     - pip intall -r requirements.txt
-    #   script:
-    #     -
+
+    #dataAnalysis
+    - language: java
+      jdk: openjdk8
+      java: 8
+      before-script:
+        - cd data_nalysis
+      install:
+        - mvn clean install
+      script:
+        - mvn spring-boot:run
