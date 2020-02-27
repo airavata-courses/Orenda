@@ -67,7 +67,7 @@ matrix:
       jdk: openjdk8
       java: 8
       before-script:
-        - cd data_nalysis
+        - cd data_analysis
       install:
         - mvn clean install
       script:
