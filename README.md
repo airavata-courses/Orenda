@@ -1,12 +1,20 @@
-
 # Orenda
 
-### Team Members:
-Milan Chheta 
+# A Science Gateway with Microservices for Weather Forecasting
 
-Neha Nayak 
+## Getting Started
 
-Disha Talreja 
+To have the system up and running, visit this [Link](https://github.com/airavata-courses/Orenda/wiki/Orenda)
 
-#### To start with setting up the project go to [Orenda Page](https://github.com/airavata-courses/Orenda/wiki/Orenda)
+## Documenation
+
+To learn more about the project, visit this [Link](https://github.com/airavata-courses/Orenda/wiki/Home)
+
+### Developers
+
+ [**Milan Chheta**](https://github.com/milanchheta)
+
+ [**Neha Nayak**](https://github.com/nmnayak)
+
+ [**Disha Talreja**](https://github.com/DishaTalreja3)
 
