@@ -3,35 +3,38 @@ const producer = require("../config/kafkaConfig").producer;
 const uuidv1 = require("uuid/v1");
 let config = require("../config/config");
 
-async function session(res, req) {
+async function session(req, res) {
+
   let uid = uuidv1();
-  msg = req.body;
-  id = msg["userID"];
+  let msg = req.body;
+  let id = msg["userID"];
 
   let data = { uid: uid, userID: id };
-  let res = await produce(data, config.kafkaTopics.producers.session);
-  if (res != "error") {
-    res.sendStataus(200);
-  }
-  else{
+  let result = await produce(data, config.kafkaTopics.producers.session);
+  if (result == "error") {
+    res.sendStatus(400);
+    
+  } else {
     resID[uid] = res;
   }
-
 }
-async function task(res, req) {
+async function task(req, res) {
+ 
   let uid = uuidv1();
-  msg = req.body;
-  id = msg["userID"];
+  let  msg = req.body;
+  
+  let id = msg["userID"];
   let data = { inputData: msg["inputData"], uid: uid, userID: id };
-  let res = await produce(
+ 
+  let result = await produce(
     data,
-    config.kafkaTopics.producers.sessiondataRetrieval
+    config.kafkaTopics.producers.dataRetrieval
   );
-  if (res != "error") {
-    res.sendStataus(200);
-  }
-  else{
-      res.sendStataus(400)
+  if (result != "error") {
+    res.sendStatus(200);
+    console.log('task submitted')
+  } else {
+    res.sendStatus(400);
   }
 }
 
