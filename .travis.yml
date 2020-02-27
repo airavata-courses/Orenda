@@ -1,0 +1,68 @@
+matrix:
+  include:
+    #dataModelling
+    - language: python
+      python: 3.7
+      before-install:
+        - cd dataModelling
+        - source venv/bin/activate
+      install:
+        - pip intall -r requirements.txt
+      script:
+        - ytest
+
+    #dataRetrieval
+    - language: python
+      python: 3.7
+      before-install:
+        - cd dataModelling
+        - source venv/bin/activate
+      install:
+        - pip intall -r requirements.txt
+      script:
+        - pytest
+
+    #userManagement
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd userManagement
+        - npm intall
+      script: -npm test
+
+    #sessionManagement
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd sessionManagement
+        - npm intall
+      script: -npm test
+
+    #apiGateway
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd APIgateway
+        - npm intall
+      script: -npm test
+
+    #frontend
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd frontend
+        - npm intall
+      script: -npm test
+    # #dataAnalysis
+    # - language: python
+    #   python:
+    #   before-script:
+    #     - cd dataModelling
+    #     - source venv/bin/activate
+    #     - pip intall -r requirements.txt
+    #   script:
+    #     -
