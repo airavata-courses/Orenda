@@ -1,25 +1,57 @@
-const producer=require('../config/kafkaConfig').producer
+const producer = require("../config/kafkaConfig").producer;
 
- function produce(msg,topic) {
+const uuidv1 = require("uuid/v1");
+let config = require("../config/config");
 
-msg=JSON.stringify(msg)
-return new Promise((resolve,reject)=>{
-    let payloads = [
-        {
-        topic: topic,
-        messages: msg
-        }
-    ]
-    producer.send(payloads, (error, data) => {
-        if (error) {
-            console.log(error)
-            reject(error)
-        } else {  
-       
-        resolve(data)
-        }
-    })
-})
+async function session(res, req) {
+  let uid = uuidv1();
+  msg = req.body;
+  id = msg["userID"];
+
+  let data = { uid: uid, userID: id };
+  let res = await produce(data, config.kafkaTopics.producers.session);
+  if (res != "error") {
+    res.sendStataus(200);
+  }
+  else{
+    resID[uid] = res;
+  }
+
+}
+async function task(res, req) {
+  let uid = uuidv1();
+  msg = req.body;
+  id = msg["userID"];
+  let data = { inputData: msg["inputData"], uid: uid, userID: id };
+  let res = await produce(
+    data,
+    config.kafkaTopics.producers.sessiondataRetrieval
+  );
+  if (res != "error") {
+    res.sendStataus(200);
+  }
+  else{
+      res.sendStataus(400)
+  }
 }
 
-module.exports = { produce };
+async function produce(msg, topic) {
+  msg = JSON.stringify(msg);
+
+  let payloads = [
+    {
+      topic: topic,
+      messages: msg
+    }
+  ];
+  producer.send(payloads, (error, data) => {
+    if (error) {
+      console.log(error);
+      return "error";
+    } else {
+      return data;
+    }
+  });
+}
+
+module.exports = { session, task };

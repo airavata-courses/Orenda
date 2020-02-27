@@ -19,7 +19,6 @@ public class Consumer {
     @KafkaListener(topics = "dataAnalysisConsumerF", groupId = "test-consumer-group")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
-        // ImageUpload.main(message);
         DemoApplication.producer.sendMessage(message);
     }
 
