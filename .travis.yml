@@ -68,7 +68,5 @@ matrix:
       java: 8
       before-script:
         - cd data_analysis
-      install:
-        - mvn clean install
       script:
-        - mvn spring-boot:run
+        - mvn clean && mvn spring-boot:run
