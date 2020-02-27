@@ -29,14 +29,7 @@ def produce(data,conn,client):
         scans = conn.get_avail_scans(Year,Month,Day,Radar) # year, month and day
         results = conn.download(scans[numberOfPlots-1], 'templocation')
       
-        # fig = plt.figure(figsize=(16,12))
         for i,scan in enumerate(results.iter_success(),start=1):
-        #         ax = fig.add_subplot(1,1,i)
-        #         radar = scan.open_pyart()
-                
-        #         display = pyart.graph.RadarDisplay(radar)
-        #         display.plot('reflectivity',0,ax=ax,title="{} {}".format(scan.radar_id,scan.scan_time))
-        #         display.set_limits((-150, 150), (-150, 150), ax=ax)
 
                 sweep = 0
                 name = scan.open()
