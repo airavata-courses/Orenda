@@ -71,4 +71,4 @@ matrix:
       before-script:
         - cd data_analysis
       script:
-        - mvn test -B
+        - mvn clean install
