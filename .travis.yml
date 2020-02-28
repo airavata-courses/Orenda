@@ -26,6 +26,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd userManagement
+      install:
         - npm install
       script: 
         - npm start
@@ -36,6 +37,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd sessionManagement
+      install:
         - npm install
       script: 
         - npm start
@@ -46,6 +48,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd APIgateway
+      install:
         - npm install
       script: 
         - npm start
@@ -56,6 +59,7 @@ matrix:
       before-install:
         # - npm i -g npm@version-number
         - cd frontend
+      install:
         - npm install
       script: 
         - npm start
