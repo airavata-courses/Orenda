@@ -1,0 +1,8 @@
+version: "3"
+services:
+  user_management:
+    build: "./UserManagement"
+    ports:
+      - 5009:5009
+
+ 

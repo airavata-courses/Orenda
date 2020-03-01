@@ -1,0 +1,11 @@
+slanguage: node_js
+node_js: 10.16
+before-install:
+  - cd userManagement
+install:
+  - npm install
+script: 
+  - npm start
+branches:
+  only:
+  - dockerizeUserManagement
