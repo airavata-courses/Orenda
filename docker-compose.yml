@@ -1,0 +1,8 @@
+version: "3"
+services:
+  data_analysis:
+    build: "./data_analysis"
+    ports:
+      - 3001:3001
+    depends_on:
+      - kafka
