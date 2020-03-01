@@ -4,7 +4,7 @@
         "consumers": {
             "apiConsumer": "apiGatewayConsumerF"
         },
-        "producers:": {
+        "producers": {
             "session": "sessionManagementConsumerApiF",
             "dataRetrieval": "dataRetrievalConsumerF"
         }
