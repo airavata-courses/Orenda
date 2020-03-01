@@ -1,0 +1,14 @@
+# docker-compose.yml
+
+version: "3"
+services:
+version: "3"
+services:  
+  data_modelling:
+    build: "./dataModelling"
+    ports:
+      - 8080:8080
+    depends_on:
+      - kafka
+
+
