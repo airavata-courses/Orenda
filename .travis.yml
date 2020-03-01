@@ -72,3 +72,7 @@ matrix:
         - cd data_analysis
       script:
         - mvn clean install
+branches:
+  only:
+  - master
+  
