@@ -4,8 +4,8 @@ before-install:
   - cd APIgateway
 install:
   - npm install
-script: 
-  - npm start
+# script: 
+#   - npm start
 branches:
   only:
   - dockerizeApiGateway
