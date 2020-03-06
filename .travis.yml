@@ -12,7 +12,7 @@ after_success:
   - export REPOSITORY=michheta15/api_gateway
   - export TAG=`if [ "$TRAVIS_BRANCH" == "dockerizeApiGateway" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -t orenda_api_gateway .
-  - docker tag data-retrieval-microservice $REPOSITORY:$TAG
+  - docker tag orenda_api_gateway $REPOSITORY:$TAG
   - docker push michheta15/api_gateway:orenda_api_gateway
 
 branches:
