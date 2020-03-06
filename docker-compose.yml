@@ -1,9 +1,15 @@
 version: "3"
 services:
   api_gateway:
+    container_name: apiGatewayService
     build: "./APIGateway"
+    networks:
+      - orenda_default
     ports:
-      - 5000:5000
-    depends_on:
-      - kafka
-    restart: unless-stopped
+      - "5000:5000"
+    external_links:
+      - kafkaService
+      - zookeeperService
+networks:
+  orenda_default:
+    external: true
