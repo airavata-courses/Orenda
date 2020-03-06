@@ -5,11 +5,12 @@ before-install:
 install:
   - npm install
 script: 
+    - echo "test api api_gateway"
 #   - npm start
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -t ./APIGateway 
-  - docker push michheta15/api_gateway
+  - docker push michheta15/api_gateway:v1.0.0
 
 branches:
   only:
