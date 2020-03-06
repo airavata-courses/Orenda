@@ -4,13 +4,13 @@ services:
     container_name: frontendService
     build: "./frontend"
     networks:
-      - orenda_default
+      - kafka_orenda
     ports:
       - "3000:3000"
     external_links:
       - apiGatewayService
       - userManagmentService
 networks:
-  orenda_default:
+  kafka_orenda:
     external: true
 
