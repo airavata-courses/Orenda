@@ -1,16 +1,11 @@
 version: "3"
 services:
   frontend:
-    container_name: frontendService
+    container_name: frontend_service
     build: "./frontend"
-    networks:
-      - kafka_orenda
     ports:
       - "3000:3000"
     external_links:
       - apiGatewayService
       - userManagmentService
-networks:
-  kafka_orenda:
-    external: true
 
