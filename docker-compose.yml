@@ -4,11 +4,11 @@ services:
     container_name: UserManagementService
     build: "./userManagement"
     networks:
-      - orenda_default
+      - kafka_orenda
     ports:
       - "5009:5009"
     external_links:
       - frontendService
 networks:
-  orenda_default:
+  kafka_orenda:
     external: true
