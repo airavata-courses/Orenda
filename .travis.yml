@@ -4,8 +4,13 @@ before-install:
   - cd userManagement
 install:
   - npm install
-# script: 
+script: 
+    - echo "test user_management"
 #   - npm start
+after_success:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker build -t michheta15/user_management:latest .
+  - docker push michheta15/user_management:latest
 branches:
   only:
   - dockerizeUserManagement
