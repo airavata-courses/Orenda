@@ -9,8 +9,8 @@ script:
 #   - npm start
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker build -t michheta15/api_gateway:latest .
-  - docker push michheta15/api_gateway:latest
+  - docker build -t orenda15/api_gateway:latest .
+  - docker push orenda15/api_gateway:latest
 
 branches:
   only:
