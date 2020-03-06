@@ -5,12 +5,12 @@ before-install:
 install:
   - npm install
 script: 
-    - echo "test api_gateway"
+    - echo "test frontend"
 #   - npm start
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker build -t michheta15/api_gateway:latest .
-  - docker push michheta15/api_gateway:latest
+  - docker build -t michheta15/frontend:latest .
+  - docker push michheta15/frontend:latest
 branches:
   only:
   - dockerizeFrontend
