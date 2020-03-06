@@ -9,8 +9,8 @@ script:
 #   - npm start
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker build -t michheta15/frontend:latest .
-  - docker push michheta15/frontend:latest
+  - docker build -t orenda15/frontend:latest .
+  - docker push orenda15/frontend:latest
 branches:
   only:
   - dockerizeFrontend
