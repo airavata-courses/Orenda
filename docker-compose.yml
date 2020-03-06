@@ -1,8 +1,14 @@
 version: "3"
 services:
   user_management:
-    build: "./UserManagement"
+    container_name: UserManagementService
+    build: "./userManagement"
+    networks:
+      - orenda_default
     ports:
-      - 5009:5009
-
- 
+      - "5009:5009"
+    external_links:
+      - frontendService
+networks:
+  orenda_default:
+    external: true
