@@ -9,10 +9,8 @@ script:
 #   - npm start
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - export REPOSITORY=api_gateway
-  - export TAG=`if [ "$BRANCH" == "api_gateway" ]; then echo "latest"; else echo $BRANCH ; fi`
-  - docker build -t $DOCKER_USERNAME/$REPOSITORY:$TAG .
-  - docker push $DOCKER_USERNAME/$REPOSITORY:$TAG
+  - docker build -t michheta15/api_gateway:latest .
+  - docker push michheta15/api_gateway:latest
 
 branches:
   only:
