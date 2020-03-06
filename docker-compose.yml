@@ -1,6 +1,16 @@
 version: "3"
 services:
   frontend:
+    container_name: frontendService
     build: "./frontend"
+    networks:
+      - orenda_default
     ports:
-      - 3000:3000
+      - "3000:3000"
+    external_links:
+      - apiGatewayService
+      - userManagmentService
+networks:
+  orenda_default:
+    external: true
+

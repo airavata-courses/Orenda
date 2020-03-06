@@ -4,8 +4,8 @@ before-install:
   - cd frontend
 install:
   - npm install
-script: 
-  - npm start
+# script: 
+#   - npm start
 branches:
   only:
   - dockerizeFrontend
