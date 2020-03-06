@@ -10,9 +10,9 @@ script:
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - export REPOSITORY=michheta15/api_gateway
-  - export TAG=`if [ "$BRANCH" == "dockerizeApiGateway" ]; then echo "latest"; else echo $BRANCH ; fi`
-  - docker build -t orenda_api_gateway .
-  - docker tag orenda_api_gateway $REPOSITORY:$TAG
+  - export TAG=`if [ "$BRANCH" == "api_gateway" ]; then echo "latest"; else echo $BRANCH ; fi`
+  - docker build -t api_gateway .
+  - docker tag api_gateway $REPOSITORY:$TAG
   - docker push $REPOSITORY:$TAG
 
 branches:
