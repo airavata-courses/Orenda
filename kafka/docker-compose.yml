@@ -7,14 +7,14 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - orenda_default
+      - orenda
   kafka:
     container_name: kafkaService
     image: wurstmeister/kafka:latest
     depends_on:
       - zookeeper
     networks:
-      - orenda_default
+      - orenda
     ports:
       - "9092:9092"
     environment:
@@ -31,5 +31,5 @@ services:
         sessionManagementConsumerApiF:1:1,
         "
 networks:
-  orenda_default:
-    external: true
+  orenda:
+
