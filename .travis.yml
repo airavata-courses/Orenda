@@ -8,12 +8,11 @@ script:
     - echo "test api api_gateway"
 #   - npm start
 after_success:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - export REPOSITORY=michheta15/api_gateway
+  - docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_PASSWORD
+  - export REPOSITORY=api_gateway
   - export TAG=`if [ "$BRANCH" == "api_gateway" ]; then echo "latest"; else echo $BRANCH ; fi`
-  - docker build -t api_gateway .
-  - docker tag api_gateway $REPOSITORY:$TAG
-  - docker push $REPOSITORY:$TAG
+  - docker build -t $DOCKER_USERNAME/$REPOSITORY:$TAG .
+  - docker push $DOCKER_USERNAME/$REPOSITORY:$TAG
 
 branches:
   only:
