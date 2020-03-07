@@ -3,9 +3,14 @@ services:
   session_management:
     container_name: session_management_service
     build: "./SessionManagement"
+    networks:
+      - kafka_orenda
     ports:
       - 8000:8000
     depends_on:
       - kafka
       - api_gateway
+networks:
+  kafka_orenda:
+    external: true
 
