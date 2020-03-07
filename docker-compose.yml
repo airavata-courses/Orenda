@@ -1,6 +1,7 @@
 version: "3"
 services:
   data_analysis:
+    container_name: data_analysis_service
     build: "./data_analysis"
     ports:
       - 3001:3001
