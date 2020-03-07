@@ -6,6 +6,10 @@ install:
   - npm install
 script: 
   - npm start
+after_success:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker build -t orenda15/session_management:latest .
+  - docker push orenda15/session_management:latest
 branches:
   only:
   - dockerizeSessionManagement
