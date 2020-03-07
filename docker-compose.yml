@@ -3,7 +3,12 @@ services:
   data_analysis:
     container_name: data_analysis_service
     build: "./data_analysis"
+    networks: 
+      - kafka_orenda
     ports:
       - 3001:3001
     depends_on:
       - kafka
+networks:
+  kafka_orenda:
+    external: true
