@@ -8,7 +8,7 @@ conn = nexradaws.NexradAwsInterface()
 app = Flask(__name__)
 
 
-client = KafkaClient(hosts="kafkaService:9092")
+client = KafkaClient(hosts="kafka-service:9092")
 consumer =  client.topics['dataModellingConsumerF'].get_simple_consumer(consumer_group="dataModellingConsumerF",
                                      auto_commit_enable=True)
 

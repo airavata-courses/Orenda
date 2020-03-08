@@ -5,6 +5,7 @@ services:
 version: "3"
 services:  
   data_modelling:
+    container_name: data-modelling-service
     build: "./dataModelling"
     networks:
         - kafka_orenda

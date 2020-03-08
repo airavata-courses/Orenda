@@ -6,7 +6,9 @@ before-install:
 install:
   - pip3 install -r requirements.txt
 script:
-  - python3 app.py
+  #- python3 app.py
+  - echo "test dataRetrieval"
+
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -t orenda15/user_management:latest .
