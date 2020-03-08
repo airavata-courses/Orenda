@@ -3,13 +3,13 @@ version: "3"
 services:
   zookeeper:
     image: wurstmeister/zookeeper:latest
-    container_name: zookeeperService
+    container_name: zookeeper-service
     ports:
       - "2181:2181"
     networks:
       - orenda
   kafka:
-    container_name: kafkaService
+    container_name: kafka-service
     image: wurstmeister/kafka:latest
     depends_on:
       - zookeeper
