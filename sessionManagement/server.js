@@ -14,9 +14,7 @@ app.use(cors());
 
 
 
-app.listen(process.env.PORT, () => {
-  console.log("gateway listening on port " + process.env.PORT);
-});
+
 InitiateMongoServer();
 
 consumer.on('message', function(message) {
