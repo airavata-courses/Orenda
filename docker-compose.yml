@@ -1,15 +1,12 @@
 version: "3"
 services:
   api_gateway:
-    container_name: apiGatewayService
+    container_name: api-gateway-service
     build: "./APIGateway"
     networks:
       - kafka_orenda
     ports:
       - "5000:5000"
-    external_links:
-      - kafkaService
-      - zookeeperService
 networks:
   kafka_orenda:
     external: true
