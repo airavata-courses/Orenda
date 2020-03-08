@@ -4,6 +4,8 @@ services:
     build: "./dataRetrieval"
     networks:
         - kafka_orenda
+    container_name: data-retrieval-service
+
 networks:
     kafka_orenda:
         external: true

@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 
 
-client = KafkaClient()
+client = KafkaClient(hosts="kafka-service:9092")
 consumer =  client.topics['dataRetrievalConsumerF'].get_simple_consumer(consumer_group="dataModellingConsumerF",
                                      auto_commit_enable=True)
 
