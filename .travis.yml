@@ -4,7 +4,7 @@ java: 8
 before-script:
   - cd data_analysis
 script:
-  - mvn clean install
+  - mvn install
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -t orenda15/data_analysis:latest .
