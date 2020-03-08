@@ -6,9 +6,10 @@ version: "3"
 services:  
   data_modelling:
     build: "./dataModelling"
-    ports:
-      - 8080:8080
-    depends_on:
-      - kafka
+    networks:
+        - kafka_orenda
+networks:
+    kafka_orenda:
+        external: true
 
 
