@@ -4,7 +4,7 @@ before-install:
   - cd userManagement
 install:
   - npm install
-script: 
+script:  
     - npm start
     - npm test
 after_success:
