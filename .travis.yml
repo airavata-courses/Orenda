@@ -5,8 +5,7 @@ before-install:
 install:
   - npm install
 script: 
-    - echo "test user_management"
-#   - npm start
+    - npm test
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -t orenda15/user_management:latest .
