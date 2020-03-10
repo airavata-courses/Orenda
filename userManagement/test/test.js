@@ -1,68 +1,64 @@
-let chai = require("chai");
-let chaiHttp = require("chai-http");
-let server = require("../server.js");
-let should = chai.should();
+const request = require("supertest");
+const expect = require("expect");
+const app = require("../server");
+var User = require("../userService/models/user-model");
 
-chai.use(chaiHttp);
+let userRegister = {
+  firstName: "John",
+  lastName: "Doe",
+  email: "john@gmail.com",
+  password: "John@123"
+};
 
+userSignin = {
+  email: "john@gmail.com",
+  password: "John@123"
+};
 
-describe("Server test", function() {
-    afterEach(function() {
-        server.close();
-      });
-  it("it should show server as started", done => {
-    chai
-      .request(server)
+describe("Server test", () => {
+  it("should say server started", done => {
+    request(app)
       .get("/")
-      .end((err, res) => {
-        res.text.should.be.equal("Server Started");
+      .expect(200)
+      .expect(res => {
+        expect(res.text).toBe("Server Started");
         done();
+      })
+      .end((err, res) => {
+        if (err) return done(err);
       });
   });
 });
 
-describe("User already exists", function() {
-    afterEach(function() {
-        server.close();
-      });
-
-
-  it("it should POST the user with given details", done => {
-    let user = {
-      firstName: "John",
-      lastName: "Doe",
-      email: "john@gmail.com",
-      password: "John@123"
-    };
-    chai
-      .request(server)
+describe("User Exists", () => {
+  it("should give status 400", done => {
+    User.deleteOne(userRegister);
+    request(app)
       .post("/register")
-      .send(user)
-      .end((err, res) => {
-        res.should.have.status(400);
+      .send(userRegister)
+      .expect(res => {
+        expect(res.status).toBe(400)
         done();
+      })
+      .end((err, res) => {
+        if (err) return done(err);
       });
   });
 });
 
 
-describe("User Login", () => {
-    afterEach(function() {
-        server.close();
+describe("Login User", () => {
+  it("should give status 200", done => {
+    User.deleteOne(userRegister);
+    request(app)
+      .post("/login")
+      .send(userRegister)
+      .expect(res => {
+        expect(res.status).toBe(200)
+        done();
+      })
+      .end((err, res) => {
+        if (err) return done(err);
       });
- 
-    it("it should get the user with given email", done => {
-        let user = {
-            email: "john@gmail.com",
-            password: "John@123"
-          };  
-      chai
-        .request(server)
-        .post("/login")
-        .send(user)
-        .end((err, res) => {
-          res.should.have.status(200);
-          done();
-        });
-    });
   });
+});

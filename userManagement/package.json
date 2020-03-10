@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --exit"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "expect": "^25.1.0",
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
@@ -23,6 +24,7 @@
     "mongoose": "^5.8.11",
     "nodemon": "^2.0.2",
     "request": "^2.88.2",
+    "supertest": "^4.0.2",
     "validator": "^12.2.0"
   }
 }
