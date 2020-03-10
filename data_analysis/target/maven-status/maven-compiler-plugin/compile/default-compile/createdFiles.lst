@@ -1,6 +1,6 @@
-com/example/data_analysis/engine/Producer.class
-com/example/data_analysis/models/ReceivedData.class
-com/example/data_analysis/engine/Consumer.class
-com/example/data_analysis/controllers/KafkaController.class
-com/example/data_analysis/DemoApplication.class
-com/example/data_analysis/models/ImageUpload.class
+com\example\data_analysis\DemoApplication.class
+com\example\data_analysis\models\ImageUpload.class
+com\example\data_analysis\engine\Producer.class
+com\example\data_analysis\controllers\KafkaController.class
+com\example\data_analysis\engine\Consumer.class
+com\example\data_analysis\models\ReceivedData.class
