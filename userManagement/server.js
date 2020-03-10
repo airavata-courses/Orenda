@@ -15,6 +15,8 @@ require("./userService/routes")(app);
 InitiateMongoServer();
 
 
-app.listen(config.PORT, () => {
+server=app.listen(config.PORT, () => {
   console.log("gateway listening on port " + config.PORT);
 });
+
+module.exports = server;
