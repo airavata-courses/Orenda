@@ -9,15 +9,12 @@ app = Flask(__name__)
 
 
 client = KafkaClient(hosts="kafka-service:9092")
-consumer =  client.topics['dataModellingConsumerF'].get_simple_consumer(consumer_group="dataModellingConsumerF",
+consumer =  client.topics['dataModellingConsumerF'].get_simple_consumer(consumer_group="test-consumer-group",
                                      auto_commit_enable=True)
 
 for message in consumer:
+    print("task received at dataModellingConsumerF")
     if message is not None:
         dataMsg=json.loads(message.value)
         produce(dataMsg,conn,client)
         consumer.commit_offsets()
-
-
-
-
