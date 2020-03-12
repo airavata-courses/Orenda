@@ -33,7 +33,8 @@ matrix:
         - docker push orenda15/user_management:latest
 
     #userManagement
-    - node_js: 10.16
+    - language: node_js
+      node_js: 10.16
       before-install:
         - cd userManagement
       install:
