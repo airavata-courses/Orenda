@@ -13,13 +13,16 @@ services:
   kafka:
     container_name: kafka-service
     image: wurstmeister/kafka:latest
+    command: [start-kafka.sh]
     depends_on:
       - zookeeper
     networks:
       - orenda
+    hostname: kafka-service
     ports:
       - "9092:9092"
     environment:
+   
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENERS: "INTERNAL://kafka:9090,\
         EXTERNAL://:9092"
@@ -28,6 +31,8 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:PLAINTEXT,\
         EXTERNAL:PLAINTEXT"
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_ADVERTISED_HOST_NAME: kafka-service
+      KAFKA_ADVERTISED_PORT: 9092
       KAFKA_CREATE_TOPICS: "
         test:1:1,
         apiGatewayConsumerF:1:1,
@@ -37,6 +42,7 @@ services:
         sessionManagementConsumerF:1:1,
         sessionManagementConsumerApiF:1:1,
         "
+
     restart: unless-stopped
     
   frontend:
@@ -69,13 +75,13 @@ services:
       - orenda
     restart: unless-stopped
 
-    # data_analysis:
-    #   container_name: data-analysis-service
-    #   build: "./data_analysis"
-    #   depends_on:
-    #     - kafka
-    #   networks:
-    #     - orenda
+  # data_analysis:
+  #     container_name: data-analysis-service
+  #     build: "./data_analysis"
+  #     depends_on:
+  #       - kafka
+  #     networks:
+  #       - orenda
 
   data_retrieval:
       container_name: data-retrieval-service
