@@ -4,17 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "milan",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "kafka-node": "^5.0.0",
+    "mocha": "^7.1.0",
     "nodemon": "^2.0.2",
+    "request": "^2.88.2",
     "uuid": "^3.4.0"
   },
   "devDependencies": {
