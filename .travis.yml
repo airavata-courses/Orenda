@@ -1,18 +1,78 @@
-language: node_js
-node_js: 10.16
-before-install:
-  - cd APIgateway
-install:
-  - npm install
-script: 
-    - echo "test api_gateway"
-#   - npm start
-after_success:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker build -t orenda15/api_gateway:latest .
-  - docker push orenda15/api_gateway:latest
+matrix:
+  include:
+    #dataModelling
+    - language: python
+      python: 3.7
+      before-install:
+        - cd dataModelling
+      install:
+        - pip3 install -r requirements.txt
+      script:
+        - python3 app.py
 
+    #dataRetrieval
+    - language: python
+      python: 3.7
+      before-install:
+        - cd dataRetrieval
+      install:
+        - pip3 install -r requirements.txt
+      script:
+        - python3 app.py
+
+    #userManagement
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd userManagement
+      install:
+        - npm install
+      script: 
+        - npm start
+
+    #sessionManagement
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd sessionManagement
+      install:
+        - npm install
+      script: 
+        - npm start
+
+    #apiGateway
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd APIgateway
+      install:
+        - npm install
+      script: 
+        - npm start
+
+    #frontend
+    - language: node_js
+      node_js: 10.16
+      before-install:
+        # - npm i -g npm@version-number
+        - cd frontend
+      install:
+        - npm install
+      script: 
+        - npm start
+
+    #dataAnalysis
+    - language: java
+      jdk: openjdk8
+      java: 8
+      before-script:
+        - cd data_analysis
+      script:
+        - mvn clean install
 branches:
   only:
-  - dockerizeApiGateway
-
+  - master
+  

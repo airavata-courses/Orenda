@@ -98,3 +98,6 @@ exports.login = async function register(req, res, next) {
 // exports.reset = function reset(req, res, next) {
 
 // };
+exports.serverStarted = async function register(req, res, next) {
+res.send("Server Started")
+}
