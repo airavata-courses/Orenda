@@ -3,6 +3,8 @@ services:
   frontend:
     container_name: frontend-service
     build: "./frontend"
+    networks: 
+      - kafka_orenda
     ports:
       - "3000:3000"
 networks:
