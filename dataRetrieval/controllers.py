@@ -1,6 +1,5 @@
 
 from service import return_regions 
-from pykafka import KafkaClient
 import urllib
 import json
 
@@ -17,6 +16,7 @@ def produce(data,client):
         body = {"inputData":{"Month":Month,"Day":Day,"Year":Year,"Radar":Radar},"userID":userID,"uid":uid}
   
         with (client.topics['dataModellingConsumerF']).get_sync_producer() as producer:
+            print("task sent to dataModellingConsumerF")
             producer.produce((bytes(json.dumps(body),'utf-8')))
 
     

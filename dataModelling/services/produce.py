@@ -80,6 +80,7 @@ def produce(data,conn,client):
                 }
                 
                 with (client.topics['dataAnalysisConsumerF']).get_sync_producer() as producer:
+                                print("task sent to dataAnalysisConsumerF")
                                 producer.produce(bytes(json.dumps(body),'utf-8'))
                 
 
