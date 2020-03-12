@@ -7,7 +7,9 @@ consumer = new Consumer(
     { topic: "sessionManagementConsumerF", partition: 0, offset: 0 },
     { topic: "sessionManagementConsumerApiF", partition: 0, offset: 0 },
     { topic: "dataModellingConsumerF", partition: 0, offset: 0 },
-    { topic: "dataRetrievalConsumerF", partition: 0, offset: 0 }
+    { topic: "dataRetrievalConsumerF", partition: 0, offset: 0 },
+    { topic: "dataAnalysisConsumerF", partition: 0, offset: 0 }
+    
   ],
   {
     autoCommit: true

@@ -18,7 +18,7 @@ app.use(cors());
 InitiateMongoServer();
 
 consumer.on('message', function(message) {
-  
+    console.log('received at session from '+message.topic )
     if (message.topic == 'sessionManagementConsumerF') {
       procData.updateData(JSON.parse(message.value))
   

@@ -22,7 +22,7 @@ async function updateState(data) {
       .catch(error => {
         throw new Error(error);
       });
-    return session;
+    
   } catch (err) {
     console.log(err.message);
   }
@@ -41,7 +41,7 @@ async function updateData(data) {
         throw new Error(error);
       });
 
-    return session;
+  
   } catch (err) {
     console.log(err.message);
   }
