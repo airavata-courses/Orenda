@@ -5,6 +5,8 @@ services:
     build: "./userManagement"
     ports:
       - "5009:5009"
+    networks: 
+      - kafka_orenda
 networks:
   kafka_orenda:
     external: true
