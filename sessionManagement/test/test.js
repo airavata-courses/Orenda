@@ -1,6 +1,4 @@
 const procData = require("../sessionService/sessionControllers");
-var Session = require("../sessionService/models/session_model");
-
 const assert = require("assert");
 InitiateMongoServer = require("../config/DBconfig");
 InitiateMongoServer();
@@ -21,7 +19,7 @@ var testData = {
 describe("Create session documents", () => {
   it("should create a new record successfully", done => {
     procData.createData(testData).then(data => {
-      assert(!session.isNew); //if poke is saved to db it is not new
+      assert(data, 200); //if poke is saved to db it is not new
       done();
     });
   });

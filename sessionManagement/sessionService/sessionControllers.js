@@ -14,15 +14,16 @@ async function updateState(data) {
   try {
     filter = { uid: data["uid"] };
     update = { taskState: "executing" };
-  
+
     Session.updateOne(filter, update, { new: true })
       .then(data => {
-        return data;
+        console.log("data");
+        return 200;
       })
       .catch(error => {
         throw new Error(error);
       });
-    
+    return session;
   } catch (err) {
     console.log(err.message);
   }
@@ -35,23 +36,20 @@ async function updateData(data) {
 
     Session.updateOne(filter, update, { new: true })
       .then(data => {
-        return data;
+        console.log("data");
+        return 200;
       })
       .catch(error => {
         throw new Error(error);
       });
-
-  
+    return session;
   } catch (err) {
     console.log(err.message);
   }
 }
 
 async function retrieveData(data) {
-  let sessions = Session.find({ userID: data["userID"] }, function(
-    err,
-    documents
-  ) {
+  Session.find({ userID: data["userID"] }, function(err, documents) {
     data = { sessions: documents, userID: data["userID"], uid: data["uid"] };
     sendData(data, "apiGatewayConsumerF");
   });
