@@ -8,7 +8,13 @@ matrix:
       install:
         - pip3 install -r requirements.txt
       script:
-        - python3 app.py
+        #- python3 app.py
+        - echo "test dataRetrieval"
+
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/user_management:latest .
+        - docker push orenda15/user_management:latest
 
     #dataRetrieval
     - language: python
@@ -18,51 +24,70 @@ matrix:
       install:
         - pip3 install -r requirements.txt
       script:
-        - python3 app.py
+        # - python3 app.py
+        - echo "test dataRetrieval"
+
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/user_management:latest .
+        - docker push orenda15/user_management:latest
 
     #userManagement
-    - language: node_js
-      node_js: 10.16
+    - node_js: 10.16
       before-install:
-        # - npm i -g npm@version-number
         - cd userManagement
       install:
         - npm install
-      script: 
-        - npm start
+
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/user_management:latest .
+        - docker push orenda15/user_management:latest
 
     #sessionManagement
     - language: node_js
       node_js: 10.16
       before-install:
-        # - npm i -g npm@version-number
         - cd sessionManagement
       install:
         - npm install
       script: 
-        - npm start
+        - npm test 
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/session_management:latest .
+        - docker push orenda15/session_management:latest
 
     #apiGateway
     - language: node_js
       node_js: 10.16
       before-install:
-        # - npm i -g npm@version-number
         - cd APIgateway
       install:
         - npm install
       script: 
-        - npm start
+          - echo "test api_gateway"
+      #   - npm start
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/api_gateway:latest .
+        - docker push orenda15/api_gateway:latest
+
 
     #frontend
     - language: node_js
       node_js: 10.16
       before-install:
-        # - npm i -g npm@version-number
         - cd frontend
       install:
         - npm install
       script: 
-        - npm start
+          - echo "test frontend"
+      #   - npm start
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/frontend:latest .
+        - docker push orenda15/frontend:latest
 
     #dataAnalysis
     - language: java
@@ -71,8 +96,13 @@ matrix:
       before-script:
         - cd data_analysis
       script:
-        - mvn clean install
+        - mvn -Dmaven.test.skip test-compile jar:test-jar install
+      after_success:
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker build -t orenda15/data_analysis:latest .
+        - docker push orenda15/data_analysis:latest
+        
 branches:
   only:
-  - master
+  - develop
   
