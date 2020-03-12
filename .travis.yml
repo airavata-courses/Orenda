@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+language: node_js
+node_js: 10.16
+before-install:
+  - cd frontend
+install:
+  - npm install
+script: 
+    - echo "test frontend"
+#   - npm start
+after_success:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker build -t orenda15/frontend:latest .
+  - docker push orenda15/frontend:latest
+branches:
+  only:
+  - dockerizeFrontend
+=======
 matrix:
   include:
     #dataModelling
@@ -75,4 +93,5 @@ matrix:
 branches:
   only:
   - master
+>>>>>>> develop
   
