@@ -32,3 +32,4 @@ consumer.on('message', (message)=>{
 consumer.on('error', (error)=>{
   console.log('error', error)
 })
+module.exports = app;

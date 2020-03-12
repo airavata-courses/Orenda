@@ -14,26 +14,24 @@ app.use(cors());
 
 
 
-app.listen(process.env.PORT, () => {
-  console.log("gateway listening on port " + process.env.PORT);
-});
+
 InitiateMongoServer();
 
 consumer.on('message', function(message) {
-  
+    console.log('received at session from '+message.topic )
     if (message.topic == 'sessionManagementConsumerF') {
-      procData.updateData(message)
+      procData.updateData(JSON.parse(message.value))
   
     } else if (message.topic == 'sessionManagementConsumerApiF') {
-      procData.retrieveData(message)
+      procData.retrieveData(JSON.parse(message.value))
 
     
   } else if (message.topic == 'dataRetrievalConsumerF') {
-    procData.createData(message)
+    procData.createData(JSON.parse(message.value))
 
   }
   else if (message.topic == 'dataModellingConsumerF') {
-    procData.updateState(message)
+    procData.updateState(JSON.parse(message.value))
 
   }
   });
