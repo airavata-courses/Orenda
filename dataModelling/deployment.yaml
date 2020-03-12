@@ -1,0 +1,30 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: datamodellingservice
+spec:
+  selector:
+    app: data-modelling
+  type: LoadBalancer
+ 
+ 
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: data-modelling-deployment
+spec:
+  selector:
+    matchLabels:
+      app: data-modelling
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: data-modelling
+    spec:
+      containers:
+      - name: data-modelling
+        image: orenda15/data-modelling:latest
+        ports:

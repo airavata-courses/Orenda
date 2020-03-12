@@ -1,0 +1,29 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dataretrievalservice
+spec:
+  selector:
+    app: data-retrieval
+  type: LoadBalancer
+ 
+ 
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: data-retrieval-deployment
+spec:
+  selector:
+    matchLabels:
+      app: data-retrieval
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: data-retrieval
+    spec:
+      containers:
+      - name: data-retrieval
+        image: orenda15/data-retrieval:latest
