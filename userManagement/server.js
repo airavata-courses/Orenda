@@ -18,3 +18,4 @@ InitiateMongoServer();
 app.listen(config.PORT, () => {
   console.log("gateway listening on port " + config.PORT);
 });
+module.exports = app;
