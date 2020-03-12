@@ -1,12 +1,104 @@
+# docker-compose.yml
+
 version: "3"
-services:  
-  data_modelling:
-    container_name: data-modelling-service
-    build: "./dataModelling"
-    networks:
-        - kafka_orenda
-networks:
-    kafka_orenda:
-        external: true
+services:
+  # zookeeper:
+  #   image: wurstmeister/zookeeper:latest
+  #   ports:
+  #     - "2181"
+  #   hostname: zookeeper
+  #   networks: 
+  #     - orenda
 
+  # kafka:
+  #   image: wurstmeister/kafka:latest
+  #   depends_on:
+  #     - zookeeper
+  #   ports:
+  #     - "9092:9092"
+  #   hostname: kafka
+  #   networks: 
+  #     - orenda
+  #   environment:
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+  #     KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_CREATE_TOPICS: "
+  #       test:1:1,
+  #       apiGatewayConsumerF:1:1,
+  #       dataRetrievalConsumerF:1:1,
+  #       dataModellingConsumerF:1:1,
+  #       dataAnalysisConsumerF:1:1,
+  #       sessionManagementConsumerF:1:1,
+  #       sessionManagementConsumerApiF:1:1,
+  #       "
 
+  # api_gateway:
+  #   build: "./APIGateway"
+  #   ports:
+  #     - 5000:5000
+  #   depends_on:
+  #     - kafka
+  #   networks: 
+  #     - orenda
+  #   restart: unless-stopped
+
+  # data_retrieval:
+  #   build: "./dataRetrieval"
+  #   ports:
+  #     - 3002:3002
+  #   depends_on:
+  #     - kafka
+  #   networks: 
+  #     - orenda
+  #   # restart: unless-stopped
+
+  # data_analysis:
+  #   build: "./data_analysis"
+  #   ports:
+  #     - 3001:3001
+  #   depends_on:
+  #     - kafka
+  #   networks: 
+  #     - orenda
+  #   # restart: unless-stopped
+
+  # data_modelling:
+  #   build: "./dataModelling"
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - kafka
+  #   networks: 
+  #     - orenda
+  # #  restart: unless-stopped
+
+  frontend:
+    build: "./frontend"
+    ports:
+      - 3000:3000
+
+    networks: 
+      - orenda
+    # restart: unless-stopped
+
+  user_management:
+    build: "./UserManagement"
+    ports:
+      - 5009:5009
+    networks: 
+      - orenda
+   
+
+  # session_management:
+  #   build: "./SessionManagement"
+  #   ports:
+  #     - 8000:8000
+  #   depends_on:
+  #     - kafka
+  #     - api_gateway
+  #   networks: 
+  #     - orenda
+
+networks: 
+ orenda:
