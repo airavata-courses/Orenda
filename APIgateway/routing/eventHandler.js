@@ -3,11 +3,14 @@ const producer = require("../config/kafkaConfig").producer;
 const uuidv1 = require("uuid/v1");
 let config = require("../config/config");
 
+<<<<<<< HEAD
+=======
 async function serverStarted(req, res) {
 return res.send("Server Started")
 
 }
 
+>>>>>>> develop
 async function session(req, res) {
 
   let uid = uuidv1();
@@ -37,7 +40,11 @@ async function task(req, res) {
   );
   if (result != "error") {
     res.sendStatus(200);
+<<<<<<< HEAD
+    console.log('task submitted')
+=======
     console.log('task submitted to' +config.kafkaTopics.producers.dataRetrieval)
+>>>>>>> develop
   } else {
     res.sendStatus(400);
   }
@@ -62,4 +69,8 @@ async function produce(msg, topic) {
   });
 }
 
+<<<<<<< HEAD
+module.exports = { session, task };
+=======
 module.exports = { session, task ,serverStarted};
+>>>>>>> develop

@@ -6,6 +6,9 @@ module.exports = function(app) {
 
         app.post(config.routes.session,eventHandler.session);
         app.post(config.routes.task,eventHandler.task);
+<<<<<<< HEAD
+=======
         app.get("/",eventHandler.serverStarted);
+>>>>>>> develop
 
 };
