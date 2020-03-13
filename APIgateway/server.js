@@ -20,6 +20,7 @@ app.listen(config.PORT, () => {
 const consumer=require('./config/kafkaConfig').consumer
  
 consumer.on('message', (message)=>{
+  console.log("api consumer ")
   let data=JSON.parse(message.value)
   let uid=String(data['uid'])
   if(resID[uid] && resID[uid]!=null){
