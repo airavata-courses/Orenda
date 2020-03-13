@@ -1,7 +1,0 @@
-version: "3"
-
-services:
-  data_analysis:
-      container_name: data-analysis-service
-      build: "./"
-   

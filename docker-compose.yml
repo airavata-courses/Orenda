@@ -67,13 +67,13 @@ services:
       - orenda
     restart: unless-stopped
 
-  # data_analysis:
-  #     container_name: data-analysis-service
-  #     build: "./data_analysis"
-  #     depends_on:
-  #       - kafka
-  #     networks:
-  #       - orenda
+  data_analysis:
+      container_name: data-analysis-service
+      build: "./data_analysis"
+      depends_on:
+        - kafka
+      networks:
+        - orenda
 
   data_retrieval:
       container_name: data-retrieval-service
