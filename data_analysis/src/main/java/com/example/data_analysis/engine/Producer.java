@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
 public class Producer {
 
@@ -14,6 +15,7 @@ public class Producer {
     private  KafkaTemplate<String, String> kafkaTemplate;
 
     public  void sendMessage(String message) {
+        System.out.println("" + kafkaTemplate);
         logger.info(String.format("######################## -> Producing message -> %s", message));
         kafkaTemplate.send(TOPIC, message);
     }

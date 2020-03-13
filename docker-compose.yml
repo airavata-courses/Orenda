@@ -82,7 +82,7 @@ services:
         - kafka
       networks:
         - orenda
-      restart: unless-stopped
+      # restart: unless-stopped
 
   session_management:
       container_name: session-management-service

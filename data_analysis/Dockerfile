@@ -1,3 +1,3 @@
 FROM openjdk:8
-ADD target/spring-boot-docker.jar spring-boot-docker.jar
-ENTRYPOINT ["java","-jar","/spring-boot-docker.jar"]
+ADD target/data_analysis-0.0.1-SNAPSHOT.jar data_analysis-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","/data_analysis-0.0.1-SNAPSHOT.jar"]
