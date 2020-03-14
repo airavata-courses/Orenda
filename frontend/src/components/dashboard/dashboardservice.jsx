@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://localhost:5000/';
+const USER_API_BASE_URL = 'http://apigatewayservice:5000/';
 // const USER_API_BASE_URL = '0.0.0.0:5000/';
 
 class dashService {
