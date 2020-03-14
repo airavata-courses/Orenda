@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: usermanagementservice
+  name: user-management-service
 spec:
   selector:
     app: user-management
