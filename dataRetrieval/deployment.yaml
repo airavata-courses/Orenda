@@ -6,6 +6,15 @@ metadata:
 spec:
   selector:
     app: data-retrieval
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 3006
+      # Port to forward to inside the pod
+      targetPort: 5012
+      # Port accessible outside cluster
+      nodePort: 30006
+  type: LoadBalancer
   type: LoadBalancer
  
  
