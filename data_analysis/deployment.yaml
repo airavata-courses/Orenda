@@ -6,11 +6,18 @@
     spec:
       selector:
         app: data-analysis
-      
+      ports:
+      - protocol: "TCP"
+        # Port accessible inside cluster
+        port: 3004
+        # Port to forward to inside the pod
+        targetPort: 5010
+        # Port accessible outside cluster
+        nodePort: 30004
       type: LoadBalancer
      
      
-    ---
+---
     apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
     kind: Deployment
     metadata:

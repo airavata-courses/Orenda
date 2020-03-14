@@ -42,7 +42,15 @@ spec:
         - name: KAFKA_BROKER_ID
           value: "0"
         - name: KAFKA_CREATE_TOPICS
-          value: apiGatewayConsumerF:1:1
+          value: "
+        test:1:1,
+        apiGatewayConsumerF:1:1,
+        dataRetrievalConsumerF:1:1,
+        dataModellingConsumerF:1:1,
+        dataAnalysisConsumerF:1:1,
+        sessionManagementConsumerF:1:1,
+        sessionManagementConsumerApiF:1:1,
+        "
 ---
 kind: Deployment
 apiVersion: extensions/v1beta1

@@ -26,4 +26,4 @@ spec:
     spec:
       containers:
       - name: data-retrieval
-        image: orenda15/data-retrieval:latest
+        image: orenda15/data_retrieval:latest

@@ -13,8 +13,8 @@ matrix:
 
       after_success:
         - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        - docker build -t orenda15/user_management:latest .
-        - docker push orenda15/user_management:latest
+        - docker build -t orenda15/data_modelling:latest .
+        - docker push orenda15/data_modelling:latest
 
     #dataRetrieval
     - language: python
@@ -29,8 +29,8 @@ matrix:
 
       after_success:
         - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        - docker build -t orenda15/user_management:latest .
-        - docker push orenda15/user_management:latest
+        - docker build -t orenda15/data_retrieval:latest .
+        - docker push orenda15/data_retrieval:latest
 
     #userManagement
     - language: node_js
