@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const USER_API_BASE_URL = '0.0.0.0:5009/';
-const USER_API_BASE_URL = 'http://user-management-service:5009/user/';
+const USER_API_BASE_URL = '/user/';
 
 class AuthService {
 
