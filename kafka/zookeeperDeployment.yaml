@@ -30,6 +30,7 @@ metadata:
   labels:
     app: zookeeper-1
 spec:
+  type: LoadBalancer
   ports:
   - name: client
     port: 2181
