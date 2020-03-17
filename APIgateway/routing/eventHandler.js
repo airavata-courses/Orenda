@@ -62,4 +62,4 @@ async function produce(msg, topic) {
   });
 }
 
-module.exports = { session, task ,serverStarted};
+module.exports = {  task ,serverStarted};
