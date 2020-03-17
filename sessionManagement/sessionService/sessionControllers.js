@@ -1,5 +1,5 @@
 var Session = require("./models/session_model");
-const producer = require("../config/kafkaConfig").producer;
+// const producer = require("../config/kafkaConfig").producer;
 
 async function createData(data) {
   try {
@@ -58,18 +58,18 @@ async function updateData(data) {
   });
 }
 
-function sendData(msg, topicName) {
-  msg = JSON.stringify(msg);
-  let payloads = [
-    {
-      topic: topicName,
-      messages: msg
-    }
-  ];
-  producer.send(payloads, (error, data) => {
-    if (error) {
-      console.log(error);
-    }
-  });
-}
+// function sendData(msg, topicName) {
+//   msg = JSON.stringify(msg);
+//   let payloads = [
+//     {
+//       topic: topicName,
+//       messages: msg
+//     }
+//   ];
+//   producer.send(payloads, (error, data) => {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// }
 module.exports = { updateData, retrieveData, createData, updateState };
