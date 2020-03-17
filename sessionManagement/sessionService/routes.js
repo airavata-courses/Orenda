@@ -1,4 +1,4 @@
 module.exports = function(app) {
   let eventHandler = require("./sessionControllers");
-  app.get("/session", eventHandler.retrieveData);
+  app.post("/session", eventHandler.retrieveData);
 };
