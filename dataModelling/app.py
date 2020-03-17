@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 client = KafkaClient(hosts="kafka-service:9092")
-consumer =  client.topics['dataModellingConsumerF'].get_simple_consumer(consumer_group="test-consumer-group",
+consumer =  client.topics['dataModellingConsumerF'].get_balanced_consumer(consumer_group="data-modelling",
                                      auto_commit_enable=True)
 
 for message in consumer:

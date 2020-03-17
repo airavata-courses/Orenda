@@ -12,8 +12,9 @@ consumer = new Consumer(
     
   ],
   {
-    autoCommit: true
-  }
+    autoCommit: true,
+    encoding: 'utf8',
+    groupId: 'session-management'  }
 );
 
 Producer = kafka.Producer;

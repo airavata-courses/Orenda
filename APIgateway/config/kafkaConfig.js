@@ -10,7 +10,7 @@ let config = require('./config');
         {
           autoCommit: true,
           encoding: 'utf8',
-          fromOffset: true
+          groupId: 'api-gateway'
         }
       ) 
 
