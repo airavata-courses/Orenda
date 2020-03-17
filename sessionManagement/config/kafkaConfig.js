@@ -4,6 +4,7 @@ const ConsumerGroup = kafka.ConsumerGroup
 client = new kafka.KafkaClient({ kafkaHost: "kafka-service:9092" });
 
 const consumerOptions = {
+  kafkaHost: 'kafka-service:9092',
   autoCommit: true,
   encoding: "utf8",
   groupId: "session-management",

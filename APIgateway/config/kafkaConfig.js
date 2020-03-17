@@ -15,6 +15,7 @@ producer = new Producer(client);
 //     }
 //   )
 const consumerOptions = {
+  kafkaHost: 'kafka-service:9092',
   autoCommit: true,
   encoding: "utf8",
   groupId: "api-gateway",
