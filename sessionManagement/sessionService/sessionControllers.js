@@ -13,7 +13,8 @@ async function createData(data) {
 async function updateState(data) {
   try {
     filter = { uid: data["uid"] };
-    update = { taskState: "executing" };
+    if (data == "noScans") update = { taskState: "error" };
+    else update = { taskState: "executing" };
 
     Session.updateOne(filter, update, { new: true })
       .then(data => {
@@ -49,7 +50,7 @@ async function updateData(data) {
 }
 
 async function retrieveData(req, res) {
-  console.log('/session');
+  console.log("/session");
   data = req.body;
   console.log(req.body);
   let documents = await Session.find({ userID: data["userID"] });

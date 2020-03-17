@@ -20,9 +20,13 @@ app.listen(5001, () => {
   console.log("session listening on port 5001");
 });
 consumer.on("message", function(message) {
-  console.log("received at session from " + message.topic);
+  console.log("received at session from " + message.topic + message.value);
   if (message.topic == "sessionManagementConsumerF") {
-    procData.updateData(JSON.parse(message.value));
+    if (message.value == "noScans") {
+      procData.updateState(JSON.parse(message.value));
+    } else {
+      procData.updateData(JSON.parse(message.value));
+    }
   } else if (message.topic == "sessionManagementConsumerApiF") {
     procData.retrieveData(JSON.parse(message.value));
   } else if (message.topic == "dataRetrievalConsumerF") {

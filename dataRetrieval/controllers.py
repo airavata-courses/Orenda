@@ -18,6 +18,10 @@ def produce(data,client):
         with (client.topics['dataModellingConsumerF']).get_sync_producer() as producer:
             print("task sent to dataModellingConsumerF")
             producer.produce((bytes(json.dumps(body),'utf-8')))
+    else:
+        with (client.topics['sessionManagementConsumerF']).get_sync_producer() as producer:
+            producer.produce("noScans")
+
 
     
 

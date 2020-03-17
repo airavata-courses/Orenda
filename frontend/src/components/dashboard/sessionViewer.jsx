@@ -78,7 +78,8 @@ class SessionCard extends Component {
       <small className="text-muted">Submitted on {moment(this.props.session.createdAt).format('MMMM Do YYYY')}</small>
       <hr/>
       {this.props.session.taskState=='executed' && <small className="text-muted">Executed on {moment(this.props.session.updatedAt).format('MMMM Do YYYY')}</small>}
-      {this.props.session.taskState=='None' && <small className="text-muted">No Scans Available</small>}
+      {this.props.session.taskState=='None' && <small className="text-muted">Waiting to fetch data</small>}
+      {this.props.session.taskState=='error' && <small className="text-muted">No scans available</small>}
       {this.props.session.taskState=='executing' && <ReactLoading className='te' type='balls' color='#000000' height={20} width={37} />}
 
     </Card.Footer>
