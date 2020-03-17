@@ -5,6 +5,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const consumer = require('./config/kafkaConfig').consumer;
 
+const procData = require("./sessionService/sessionControllers");
+
 dotenv.config();
 InitiateMongoServer = require("./config/DBconfig");
 app.use(bodyParser.urlencoded({ extended: false }));
