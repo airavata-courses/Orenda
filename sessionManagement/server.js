@@ -12,6 +12,7 @@ InitiateMongoServer = require("./config/DBconfig");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+require("./sessionService/routes")(app);
 
 InitiateMongoServer();
 

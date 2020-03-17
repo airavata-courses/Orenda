@@ -48,10 +48,13 @@ async function updateData(data) {
   }
 }
 
-async function retrieveData(data) {
+ function retrieveData(req,res) {
+  data=req.body
+  console.log(req.body)
   Session.find({ userID: data["userID"] }, function(err, documents) {
     data = { sessions: documents, userID: data["userID"], uid: data["uid"] };
-    sendData(data, "apiGatewayConsumerF");
+    res.send(data)
+    // sendData(data, "apiGatewayConsumerF");
   });
 }
 

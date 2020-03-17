@@ -8,21 +8,21 @@ return res.send("Server Started")
 
 }
 
-async function session(req, res) {
+// async function session(req, res) {
 
-  let uid = uuidv1();
-  let msg = req.body;
-  let id = msg["userID"];
+//   let uid = uuidv1();
+//   let msg = req.body;
+//   let id = msg["userID"];
 
-  let data = { uid: uid, userID: id };
-  let result = await produce(data, config.kafkaTopics.producers.session);
-  if (result == "error") {
-    res.sendStatus(400);
+//   let data = { uid: uid, userID: id };
+//   let result = await produce(data, config.kafkaTopics.producers.session);
+//   if (result == "error") {
+//     res.sendStatus(400);
     
-  } else {
-    resID[uid] = res;
-  }
-}
+//   } else {
+//     resID[uid] = res;
+//   }
+// }
 async function task(req, res) {
  
   let uid = uuidv1();
