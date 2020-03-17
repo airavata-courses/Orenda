@@ -1,8 +1,9 @@
 const kafka = require("kafka-node");
 const Producer = kafka.Producer;
-const Consumer = kafka.Consumer;
+// const Consumer = kafka.Consumer;
+const ConsumerGroup = kafka.ConsumerGroup
 const client = new kafka.KafkaClient({ kafkaHost: "kafka-service:9092" });
-let config = require("./config");
+// let config = require("./config");
 producer = new Producer(client);
 // consumer = new Consumer(
 //     client,
@@ -20,7 +21,7 @@ const consumerOptions = {
   protocol: ["roundrobin"],
   fromOffset: "latest"
 };
-const consumer = new ConsumerGroupStream(
+const consumer = new ConsumerGroup(
   consumerOptions,
   "sessionManagementConsumerF"
 );

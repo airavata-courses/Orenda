@@ -1,5 +1,6 @@
 var kafka = require("kafka-node");
-Consumer = kafka.Consumer;
+// const Consumer = kafka.Consumer;
+const ConsumerGroup = kafka.ConsumerGroup
 client = new kafka.KafkaClient({ kafkaHost: "kafka-service:9092" });
 
 const consumerOptions = {
@@ -10,22 +11,12 @@ const consumerOptions = {
   fromOffset: "latest"
 };
 
-const sessionCons = new ConsumerGroupStream(
-  consumerOptions,
-  "sessionManagementConsumerF"
-);
-const sessionApiCons = new ConsumerGroupStream(
-  consumerOptions,
-  "sessionManagementConsumerApiF"
-);
-const modelCons = new ConsumerGroupStream(
-  consumerOptions,
-  "dataModellingConsumerF"
-);
-const retriCons = new ConsumerGroupStream(
-  consumerOptions,
+const consumer = new ConsumerGroup(consumerOptions, [
+  "sessionManagementConsumerF",
+  "sessionManagementConsumerApiF",
+  "dataModellingConsumerF",
   "dataRetrievalConsumerF"
-);
+]);
 
 // consumer = new consumer(
 //   client,
@@ -47,9 +38,6 @@ Producer = kafka.Producer;
 producer = new Producer(client);
 
 module.exports = {
-  sessionCons,
-  sessionApiCons,
-  modelCons,
-  retriCons,
+  consumer,
   producer
 };
