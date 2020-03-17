@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const consumer = require('./config/kafkaConfig').consumer;
+const consumer = require("./config/kafkaConfig").consumer;
 
 const procData = require("./sessionService/sessionControllers");
 
@@ -19,21 +19,15 @@ InitiateMongoServer();
 app.listen(5001, () => {
   console.log("session listening on port 5001");
 });
-consumer.on('message', function(message) {
-    console.log('received at session from '+message.topic )
-    if (message.topic == 'sessionManagementConsumerF') {
-      procData.updateData(JSON.parse(message.value))
-
-    } else if (message.topic == 'sessionManagementConsumerApiF') {
-      procData.retrieveData(JSON.parse(message.value))
-
-  } else if (message.topic == 'dataRetrievalConsumerF') {
-    procData.createData(JSON.parse(message.value))
-
+consumer.on("message", function(message) {
+  console.log("received at session from " + message.topic);
+  if (message.topic == "sessionManagementConsumerF") {
+    procData.updateData(JSON.parse(message.value));
+  } else if (message.topic == "sessionManagementConsumerApiF") {
+    procData.retrieveData(JSON.parse(message.value));
+  } else if (message.topic == "dataRetrievalConsumerF") {
+    procData.createData(JSON.parse(message.value));
+  } else if (message.topic == "dataModellingConsumerF") {
+    procData.updateState(JSON.parse(message.value));
   }
-  else if (message.topic == 'dataModellingConsumerF') {
-    procData.updateState(JSON.parse(message.value))
-
-  }
-  });
-
+});
