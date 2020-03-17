@@ -9,6 +9,7 @@ class dashService {
         return axios.post(USER_API_BASE_URL + "task", data);
     }
     sessions(data){
+        console.log('fetching session data')
         return axios.post("/sessionService/session", data);
     }
 
