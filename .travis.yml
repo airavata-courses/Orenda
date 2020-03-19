@@ -14,7 +14,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_modelling:latest .
     - docker push orenda15/data_modelling:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployModel.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployModel.sh'
 
   - language: python
     python: 3.7
@@ -30,7 +30,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_retrieval:latest .
     - docker push orenda15/data_retrieval:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployRetrieve.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployRetrieve.sh'
 
   - language: node_js
     node_js: 10.16
@@ -46,7 +46,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/user_management:latest .
     - docker push orenda15/user_management:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployUser.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployUser.sh'
 
   - language: node_js
     node_js: 10.16
@@ -62,7 +62,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/session_management:latest .
     - docker push orenda15/session_management:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deploySession.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deploySession.sh'
 
   - language: node_js
     node_js: 10.16
@@ -78,7 +78,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/api_gateway:latest .
     - docker push orenda15/api_gateway:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployApi.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployApi.sh'
 
   - language: node_js
     node_js: 10.16
@@ -94,7 +94,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/frontend:latest .
     - docker push orenda15/frontend:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployFrontend.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployFrontend.sh'
 
   - language: java
     jdk: openjdk8
@@ -109,7 +109,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_analysis:latest .
     - docker push orenda15/data_analysis:latest
-    - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployAnalysis.sh'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployAnalysis.sh'
 
 branches:
   only:
