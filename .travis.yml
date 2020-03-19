@@ -15,7 +15,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployModel.sh
 
   - language: python
     python: 3.7
@@ -32,7 +32,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 /bin/bash ~/deployFiles/deployRetrieve.sh
 
   - language: node_js
     node_js: 10.16
@@ -47,7 +47,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployUser.sh
 
   - language: node_js
     node_js: 10.16
@@ -64,7 +64,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deploySession.sh
 
   - language: node_js
     node_js: 10.16
@@ -81,7 +81,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployApi.sh
 
   - language: node_js
     node_js: 10.16
@@ -98,7 +98,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployFrontend.sh
 
   - language: java
     jdk: openjdk8
@@ -114,7 +114,7 @@ matrix:
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 'deploy.sh'
+    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 /bin/bash deployAnalysis.sh
 
 branches:
   only:
