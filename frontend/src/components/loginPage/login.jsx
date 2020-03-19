@@ -20,7 +20,7 @@ export default class SignIn extends React.Component {
         
         this.props.history.push(
           "/dashboard/submittask/" +
-            localStorage.getItem("userInfo")
+            jwt_decode(localStorage.getItem("userInfo")).user.id
         );
       }
     } catch (e) {}
@@ -37,7 +37,7 @@ export default class SignIn extends React.Component {
         localStorage.setItem("userInfo", token);
         this.props.history.push(
           "/dashboard/submittask/" +
-            localStorage.getItem("userInfo")
+          jwt_decode(localStorage.getItem("userInfo")).user.id
         );
       }
     });

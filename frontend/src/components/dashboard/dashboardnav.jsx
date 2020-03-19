@@ -14,7 +14,7 @@ export default class DashNav extends Component {
       this.props.history.push("/");
     } else {
       this.setState({
-        userID: localStorage.getItem("userInfo")
+        userID: jwt_decode(localStorage.getItem("userInfo")).user.id
       });
     }
   }
