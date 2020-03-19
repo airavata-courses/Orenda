@@ -12,10 +12,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_modelling:latest .
     - docker push orenda15/data_modelling:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ../deploy_key.enc -out ../deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployModel.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployModel.sh
 
   - language: python
     python: 3.7
@@ -29,10 +31,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_retrieval:latest .
     - docker push orenda15/data_retrieval:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ./deploy_key.enc -out ./deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 /bin/bash ~/deployFiles/deployRetrieve.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 /bin/bash ~/deployFiles/deployRetrieve.sh
 
   - language: node_js
     node_js: 10.16
@@ -44,10 +48,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/user_management:latest .
     - docker push orenda15/user_management:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ../deploy_key.enc -out ../deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployUser.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployUser.sh
 
   - language: node_js
     node_js: 10.16
@@ -61,10 +67,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/session_management:latest .
     - docker push orenda15/session_management:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ./deploy_key.enc -out ./deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deploySession.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 ~/deployFiles/deploySession.sh
 
   - language: node_js
     node_js: 10.16
@@ -78,10 +86,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/api_gateway:latest .
     - docker push orenda15/api_gateway:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ./deploy_key.enc -out ./deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployApi.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101  ~/deployFiles/deployApi.sh
 
   - language: node_js
     node_js: 10.16
@@ -95,10 +105,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/frontend:latest .
     - docker push orenda15/frontend:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ./deploy_key.enc -out ./deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployFrontend.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 ~/deployFiles/deployFrontend.sh
 
   - language: java
     jdk: openjdk8
@@ -111,10 +123,12 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_analysis:latest .
     - docker push orenda15/data_analysis:latest
+    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+      -in ../deploy_key.enc -out ../deploy_key -d
     deploy:
     provider: script
     skip_cleanup: true
-    script: chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 /bin/bash deployAnalysis.sh
+    script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key ubuntu@149.165.170.101 /bin/bash deployAnalysis.sh
 
 branches:
   only:
