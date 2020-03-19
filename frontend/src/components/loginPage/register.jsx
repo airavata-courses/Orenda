@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import AuthService from "./authservice";
+import jwt_decode from "jwt-decode";
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -14,7 +15,16 @@ export default class SignUp extends Component {
     };
     this.register = this.register.bind(this);
   }
-
+  componentDidMount() {
+    try {
+      if (localStorage.getItem("userInfo")) {
+        this.props.history.push(
+          "/dashboard/submittask/" +
+          jwt_decode(localStorage.getItem("userInfo")).user.id
+        );
+      }
+    } catch (e) {}
+  }
   register = async e => {
     e.preventDefault();
     const userData = {
@@ -23,6 +33,7 @@ export default class SignUp extends Component {
       email: this.state.email,
       password: this.state.password
     };
+    
     AuthService.register(userData).then(res => {
       if (res.status == 200) {
         localStorage.setItem("userInfo", JSON.stringify(res.data.token));

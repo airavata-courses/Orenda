@@ -15,15 +15,14 @@ export default class SignIn extends React.Component {
     this.login = this.login.bind(this);
   }
   componentDidMount() {
-    try{
-    if (localStorage.getItem("userInfo")) {
-      this.props.history.push("/dashboard/submittask/" + jwt_decode(localStorage.getItem("userInfo")));
-
-    }}
-    catch(e){
-      
-
-    }
+    try {
+      if (localStorage.getItem("userInfo")) {
+        this.props.history.push(
+          "/dashboard/submittask/" +
+          jwt_decode(localStorage.getItem("userInfo")).user.id
+        );
+      }
+    } catch (e) {}
   }
   login = async e => {
     e.preventDefault();
@@ -35,7 +34,7 @@ export default class SignIn extends React.Component {
       if (res.status === 200) {
         let token = JSON.stringify(res.data.token);
         localStorage.setItem("userInfo", token);
-        this.props.history.push("/dashboard/submittask/" + jwt_decode(token));
+        this.props.history.push("/dashboard/submittask/" + jwt_decode(token).user.id);
       }
     });
   };
