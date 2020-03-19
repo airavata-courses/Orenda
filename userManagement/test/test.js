@@ -32,7 +32,7 @@ describe("Server test", () => {
 
 describe("User Exists", () => {
   it("should give status 400", done => {
-    User.deleteOne(userRegister);
+    
     request(app)
       .post("/register")
       .send(userRegister)
@@ -49,10 +49,9 @@ describe("User Exists", () => {
 
 describe("Login User", () => {
   it("should give status 200", done => {
-    User.deleteOne(userRegister);
     request(app)
       .post("/login")
-      .send(userRegister)
+      .send(userSignin)
       .expect(res => {
         expect(res.status).toBe(200)
         done();
