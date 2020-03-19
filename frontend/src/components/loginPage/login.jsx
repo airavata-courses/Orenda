@@ -17,7 +17,6 @@ export default class SignIn extends React.Component {
   componentDidMount() {
     try {
       if (localStorage.getItem("userInfo")) {
-        
         this.props.history.push(
           "/dashboard/submittask/" +
             jwt_decode(localStorage.getItem("userInfo")).user.id
@@ -35,9 +34,9 @@ export default class SignIn extends React.Component {
       if (res.status === 200) {
         let token = JSON.stringify(res.data.token);
         localStorage.setItem("userInfo", token);
+        console.log(token);
         this.props.history.push(
-          "/dashboard/submittask/" +
-          jwt_decode(localStorage.getItem("userInfo")).user.id
+          "/dashboard/submittask/" + jwt_decode(token).user.id
         );
       }
     });
