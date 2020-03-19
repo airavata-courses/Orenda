@@ -35,7 +35,7 @@ export default class SignIn extends React.Component {
       if (res.status === 200) {
         let token = JSON.stringify(res.data.token);
         localStorage.setItem("userInfo", token);
-        this.props.history.push("/dashboard/submittask/" + jwt_decode(token).user.id);
+        this.props.history.push("/dashboard/submittask/" + token.user.id);
       }
     });
   };
