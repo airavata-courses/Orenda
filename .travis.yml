@@ -3,7 +3,7 @@ matrix:
   - language: python
     python: 3.7
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d
     - cd dataModelling
     install:
@@ -19,7 +19,7 @@ matrix:
   - language: python
     python: 3.7
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d     
     - cd dataRetrieval
     install:
@@ -35,7 +35,7 @@ matrix:
   - language: node_js
     node_js: 10.16
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d  
     - cd userManagement
     install:
@@ -51,7 +51,7 @@ matrix:
   - language: node_js
     node_js: 10.16
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d  
     - cd sessionManagement
     install:
@@ -67,7 +67,7 @@ matrix:
   - language: node_js
     node_js: 10.16
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d  
     - cd APIgateway
     install:
@@ -83,7 +83,7 @@ matrix:
   - language: node_js
     node_js: 10.16
     before-install:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out '~/deployFiles/deploy.sh' 
     - cd frontend
     install:
@@ -100,7 +100,7 @@ matrix:
     jdk: openjdk8
     java: 8
     before-script:
-    - openssl aes-256-cbc -K $encrypted_ced0c438de4d_key -iv $encrypted_ced0c438de4d_iv
+    - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
       -in deploy_key.enc -out ./deploy_key -d  
     - cd data_analysis
     script:
