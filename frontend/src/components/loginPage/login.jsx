@@ -20,7 +20,7 @@ export default class SignIn extends React.Component {
         console.log(localStorage.getItem("userInfo"))
         this.props.history.push(
           "/dashboard/submittask/" +
-          jwt_decode(localStorage.getItem("userInfo")).user.id
+          (jwt_decode(localStorage.getItem("userInfo")).user.id)
         );
       }
     } catch (e) {}
