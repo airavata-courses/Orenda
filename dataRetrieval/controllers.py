@@ -20,7 +20,7 @@ def produce(data,client):
             producer.produce((bytes(json.dumps(body),'utf-8')))
     else:
         with (client.topics['sessionManagementConsumerF']).get_sync_producer() as producer:
-            producer.produce("noScans")
+            producer.produce(("noScans",'utf-8')))
 
 
     
