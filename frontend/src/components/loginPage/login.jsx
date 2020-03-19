@@ -36,7 +36,7 @@ export default class SignIn extends React.Component {
         localStorage.setItem("userInfo", token);
         console.log(token);
         this.props.history.push(
-          "/dashboard/submittask/" + jwt_decode(token).user.id
+          "/dashboard/submittask/" + jwt_decode(res.data.token).user.id
         );
       }
     });
