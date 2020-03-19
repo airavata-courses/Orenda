@@ -22,7 +22,7 @@ export default class SessionView extends Component {
       dashService.sessions(data).then(res => {
         if (res.status === 200) {
           this.setState({ sessions: res.data.sessions });
-          console.log(this.state.sessions)
+          
         }
       });
     } else {

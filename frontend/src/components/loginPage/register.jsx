@@ -20,7 +20,7 @@ export default class SignUp extends Component {
       if (localStorage.getItem("userInfo")) {
         this.props.history.push(
           "/dashboard/submittask/" +
-          jwt_decode(localStorage.getItem("userInfo")).user.id
+          localStorage.getItem("userInfo")
         );
       }
     } catch (e) {}

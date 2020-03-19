@@ -17,10 +17,10 @@ export default class SignIn extends React.Component {
   componentDidMount() {
     try {
       if (localStorage.getItem("userInfo")) {
-        console.log(localStorage.getItem("userInfo"));
+        
         this.props.history.push(
           "/dashboard/submittask/" +
-            jwt_decode(localStorage.getItem("userInfo")).user.id
+            localStorage.getItem("userInfo")
         );
       }
     } catch (e) {}
@@ -37,7 +37,7 @@ export default class SignIn extends React.Component {
         localStorage.setItem("userInfo", token);
         this.props.history.push(
           "/dashboard/submittask/" +
-            jwt_decode(localStorage.getItem("userInfo")).user.id
+            localStorage.getItem("userInfo")
         );
       }
     });

@@ -14,7 +14,7 @@ export default class DashNav extends Component {
       this.props.history.push("/");
     } else {
       this.setState({
-        userID: jwt_decode(localStorage.getItem("userInfo")).user.id
+        userID: localStorage.getItem("userInfo")
       });
     }
   }
@@ -33,7 +33,7 @@ export default class DashNav extends Component {
           <Nav.Link
             href={
               "/dashboard/session/" +
-              jwt_decode(localStorage.getItem("userInfo")).user.id
+              this.state.userID
             }
           >
             Session
