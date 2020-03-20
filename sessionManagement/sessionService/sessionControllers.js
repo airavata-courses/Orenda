@@ -4,6 +4,7 @@ var Session = require("./models/session_model");
 async function createData(data) {
   try {
     session = new Session(data);
+    console.log("data created");
     session.save();
     return 200;
   } catch (err) {
@@ -16,16 +17,12 @@ async function updateState(data) {
     if (data == "noScans") update = { taskState: "error" };
     else update = { taskState: "executing" };
 
-    Session.updateOne(filter, update, { new: true })
-      .then(data => {
-        console.log("data");
-        return 200;
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
-    return session;
+    Session.updateOne(filter, update, { new: true });
+
+    console.log("state Updated");
+    return 200;
   } catch (err) {
+    console.log("err");
     console.log(err.message);
   }
 }
@@ -35,15 +32,9 @@ async function updateData(data) {
     filter = { uid: data["uid"] };
     update = { outputData: data["outputData"], taskState: "executed" };
 
-    Session.updateOne(filter, update, { new: true })
-      .then(data => {
-        console.log("data");
-        return 200;
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
-    return session;
+    Session.updateOne(filter, update, { new: true });
+    console.log("data Updated");
+    return 200;
   } catch (err) {
     console.log(err.message);
   }

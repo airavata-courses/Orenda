@@ -28,7 +28,7 @@ describe("Create session documents", () => {
 describe("Update session State ", () => {
   it("should give taskstate as executing", done => {
     procData.updateState(testData).then(data => {
-      assert(data.taskState, "executing"); //if poke is saved to db it is not new
+      assert(data, 200); //if poke is saved to db it is not new
       done();
     });
   });
@@ -37,7 +37,8 @@ describe("Update session State ", () => {
 describe("Update session documents", () => {
   it("should give taskstate as executed", done => {
     procData.updateData(testData).then(data => {
-      assert(data.taskState, "executed"); //if poke is saved to db it is not new
+      console.log(data)
+      assert(data, 200); //if poke is saved to db it is not new
       done();
     });
   });
