@@ -15,6 +15,7 @@ export default class SignIn extends React.Component {
     this.login = this.login.bind(this);
   }
   componentDidMount() {
+    console.log('NEW VERSION')
     try {
       if (localStorage.getItem("userInfo")) {
         this.props.history.push(
