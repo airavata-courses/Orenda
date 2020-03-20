@@ -22,7 +22,8 @@ app.listen(5001, () => {
 consumer.on("message", function(message) {
   console.log("received at session from " + message.topic + message.value);
   if (message.topic == "sessionManagementConsumerF") {
-    if (message.value == "noScans") {
+    let data=JSON.parse(message.value)
+    if (taskState in data) {
       procData.updateState(JSON.parse(message.value));
     } else {
       procData.updateData(JSON.parse(message.value));
