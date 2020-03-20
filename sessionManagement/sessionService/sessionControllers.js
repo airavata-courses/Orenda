@@ -14,11 +14,11 @@ async function createData(data) {
 async function updateState(data) {
   try {
     filter = { uid: data["uid"] };
-    if (taskState in data){
-      if (data["taskState"] == "noScans") update = { taskState: "error" }
-    }
-      else update = { taskState: "executing" };
+
+    if (data["taskState"] == "noScans") update = { taskState: "error" };
+    else update = { taskState: "executing" };
     
+
     Session.updateOne(filter, update, { new: true });
 
     console.log("state Updated");

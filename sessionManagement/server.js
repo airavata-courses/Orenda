@@ -23,7 +23,7 @@ consumer.on("message", function(message) {
   console.log("received at session from " + message.topic + message.value);
   if (message.topic == "sessionManagementConsumerF") {
     let data=JSON.parse(message.value)
-    if (taskState in data) {
+    if (data["taskState"] == "noScans")  {
       procData.updateState(JSON.parse(message.value));
     } else {
       procData.updateData(JSON.parse(message.value));
