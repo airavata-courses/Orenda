@@ -12,8 +12,8 @@ matrix:
     - echo "test dataRetrieval"
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/data_modelling:latest .
-    - docker push orenda15/data_modelling:latest
+    - docker build -t orenda15/data_modelling .
+    - docker push orenda15/data_modelling
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployModel.sh'
 
   - language: python
@@ -28,8 +28,8 @@ matrix:
     - echo "test dataRetrieval"
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/data_retrieval:latest .
-    - docker push orenda15/data_retrieval:latest
+    - docker build -t orenda15/data_retrieval .
+    - docker push orenda15/data_retrieval
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployRetrieve.sh'
 
   - language: node_js
@@ -44,8 +44,8 @@ matrix:
     - npm test
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/user_management:latest .
-    - docker push orenda15/user_management:latest
+    - docker build -t orenda15/user_management .
+    - docker push orenda15/user_management
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployUser.sh'
 
   - language: node_js
@@ -60,8 +60,8 @@ matrix:
     - npm test
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/session_management:latest .
-    - docker push orenda15/session_management:latest
+    - docker build -t orenda15/session_management .
+    - docker push orenda15/session_management
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deploySession.sh'
 
   - language: node_js
@@ -76,8 +76,8 @@ matrix:
     - echo "test api_gateway"
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/api_gateway:latest .
-    - docker push orenda15/api_gateway:latest
+    - docker build -t orenda15/api_gateway .
+    - docker push orenda15/api_gateway
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployApi.sh'
 
   - language: node_js
@@ -92,8 +92,8 @@ matrix:
     - echo "test frontend"
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/frontend:latest .
-    - docker push orenda15/frontend:latest
+    - docker build -t orenda15/frontend .
+    - docker push orenda15/frontend
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployFrontend.sh'
 
   - language: java
@@ -107,8 +107,8 @@ matrix:
     - mvn -Dmaven.test.skip test-compile jar:test-jar install
     after_success:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t orenda15/data_analysis:latest .
-    - docker push orenda15/data_analysis:latest
+    - docker build -t orenda15/data_analysis .
+    - docker push orenda15/data_analysis
     - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployAnalysis.sh'
 
 branches:

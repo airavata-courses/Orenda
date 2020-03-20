@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: orenda15/api_gateway:latest
+        image: orenda15/api_gateway
         ports:
         - containerPort: 5000
 

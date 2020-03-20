@@ -34,7 +34,7 @@
         spec:
           containers:
           - name: data-analysis
-            image: orenda15/data_analysis:latest
+            image: orenda15/data_analysis
             
     
     

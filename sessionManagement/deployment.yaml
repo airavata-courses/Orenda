@@ -34,7 +34,7 @@
         spec:
           containers:
           - name: session-management
-            image: orenda15/session_management:latest
+            image: orenda15/session_management
             ports:
             - containerPort: 5001
             

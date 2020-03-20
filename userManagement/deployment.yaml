@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: user-management
-        image: orenda15/user_management:latest
+        image: orenda15/user_management
         ports:
         - containerPort: 5009
 
