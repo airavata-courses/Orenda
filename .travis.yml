@@ -14,7 +14,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_modelling:$TRAVIS_COMMIT .
     - docker push orenda15/data_modelling:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployModel.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh \$TRAVIS_COMMIT"
 
   - language: python
     python: 3.7
@@ -30,8 +30,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_retrieval:$TRAVIS_COMMIT
     - docker push orenda15/data_retrieval:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployRetrieve.sh $TRAVIS_COMMIT'
-
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh \$TRAVIS_COMMIT"
   - language: node_js
     node_js: 10.16
     before-install:
@@ -46,7 +45,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/user_management:$TRAVIS_COMMIT .
     - docker push orenda15/user_management:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployUser.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh \$TRAVIS_COMMIT"
 
   - language: node_js
     node_js: 10.16
@@ -62,7 +61,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/session_management:$TRAVIS_COMMIT .
     - docker push orenda15/session_management:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deploySession.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deploySession.sh \$TRAVIS_COMMIT"
 
   - language: node_js
     node_js: 10.16
@@ -78,7 +77,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/api_gateway:$TRAVIS_COMMIT .
     - docker push orenda15/api_gateway:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployApi.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh \$TRAVIS_COMMIT"
 
   
   - language: node_js
@@ -95,7 +94,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/frontend:$TRAVIS_COMMIT .
     - docker push orenda15/frontend:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployFrontend.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployFrontend.sh $TRAVIS_COMMIT"
 
   - language: java
     jdk: openjdk8
@@ -110,7 +109,7 @@ matrix:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t orenda15/data_analysis:$TRAVIS_COMMIT .
     - docker push orenda15/data_analysis:$TRAVIS_COMMIT
-    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 '~/deployFiles/deployAnalysis.sh $TRAVIS_COMMIT'
+    - chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh \$TRAVIS_COMMIT"
 
 branches:
   only:
