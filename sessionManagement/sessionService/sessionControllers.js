@@ -17,12 +17,18 @@ async function updateState(data) {
 
     if (data["taskState"] == "noScans") update = { taskState: "error" };
     else update = { taskState: "executing" };
-    
-
-    Session.updateOne(filter, update, { new: true });
-
-    console.log("state Updated");
+    Session.updateOne(filter, update, { new: true })
+    .then(data => {
+      console.log("state Updated");
+      return 200;
+    })
+    .catch(error => {
+      throw new Error(error);
+    });
     return 200;
+
+   
+    
   } catch (err) {
     console.log("err");
     console.log(err.message);
@@ -33,10 +39,16 @@ async function updateData(data) {
   try {
     filter = { uid: data["uid"] };
     update = { outputData: data["outputData"], taskState: "executed" };
-
-    Session.updateOne(filter, update, { new: true });
-    console.log("data Updated");
+    Session.updateOne(filter, update, { new: true })
+    .then(data => {
+      console.log("data Updated");
+      return 200;
+    })
+    .catch(error => {
+      throw new Error(error);
+    });
     return 200;
+
   } catch (err) {
     console.log(err.message);
   }
