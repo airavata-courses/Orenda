@@ -34,7 +34,6 @@ export default class SignIn extends React.Component {
       if (res.status === 200) {
         let token = JSON.stringify(res.data.token);
         localStorage.setItem("userInfo", token);
-        console.log(token);
         this.props.history.push(
           "/dashboard/submittask/" + jwt_decode(res.data.token).user.id
         );
