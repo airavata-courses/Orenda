@@ -13,10 +13,11 @@ def return_regions(month,day,year,radar):
             else: 
                 return("error")
         return('error')
-    except:
-        return('error')
     except TypeError:
         return('error')
+    except:
+        return('error')
+
 
         
 
