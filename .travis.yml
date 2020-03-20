@@ -11,17 +11,16 @@ after_success:
 - docker build -t orenda15/api_gateway:latest .
 - docker push orenda15/api_gateway:latest
 
+
 deploy:
   provider: releases
+  override: true
   api_key:
-    secure: $gitToken
-  file: cd ../APIgateway
-  skip_cleanup: true
-  overwrite: true
+    secure: BkpKamHUmayZAfYXqd6v375DQvBP/cLK4Kyxp9iKeSpzGCMKslKJKB1/BHaaV4A+e8ZBl/ETEBSkty+dszaTUsGZpDd9av6KE8y1CkYDd/1UZiwNuhyNodvdzbiQkCnv1oswXGMcUgUF3k4jX8wTajRY64RW53ZReI9XUKX3B16PPGHA88IID8EgGjEeEInBnI7ECE+D1VhIoNd7IuIe7iiM8/bWC6jPflFEYWWTCCBT0pBDuFy8h1jYjyBCUQ9oAmmU8PBdmVyoks23gHxDSpw35B51asmM4jONS4WM8GDxEaddaMHJXK7jbUlq+2gMKWjO1z6Oufl0Ck042V3kpOY5teBz2LD0GZ3Nvhl7Uu9iPNOeth1lvHLDqQODu+jAlw7H1c15u8YzqLSqlTvfcGNTiELGNCfAIyikE4OKTyEUfyeSwe2gbojrk2IxwydIN08nBhKUuhJfzfORWxwK8hh9l1Y9gs3c5gowG2Bgr3L15fluA/Jm8UUYi1O7VRmpT43O9Qxad4gO6oHfuZCeNUTvE1ox4aRfNFlHiPVEwEtqMEKitcYrVucvqXF0z5itvjRlq99/3/Ug8UHbRjihmUVY3o7RC54ENI5rqzxLQ3MLhgmaS+W80gx4LHcAjJ+cBJCSb5S6hKJ+GXHGyo9IyNS18FkcZgFJa6wqnY56icQ=
+  file: APIgateway
   on:
-    tags: false
     repo: airavata-courses/Orenda
-    branch: release-apigateway
+    branch: dev-apigateway
 
 branches:
   only:
