@@ -1,0 +1,106 @@
+version: "3"
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    container_name: zookeeper-service
+    ports:
+      - "2181:2181"
+    networks:
+      - orenda
+    restart: unless-stopped
+
+  kafka:
+    container_name: kafka-service
+    image: wurstmeister/kafka:latest
+    command: [start-kafka.sh]
+    depends_on:
+      - zookeeper
+    networks:
+      - orenda
+    hostname: kafka-service
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka-service
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_CREATE_TOPICS: "
+        test:1:1,
+        apiGatewayConsumerF:1:1,
+        dataRetrievalConsumerF:1:1,
+        dataModellingConsumerF:1:1,
+        dataAnalysisConsumerF:1:1,
+        sessionManagementConsumerF:1:1,
+        sessionManagementConsumerApiF:1:1,
+        "
+
+    restart: unless-stopped
+    
+  frontend:
+    container_name: frontend-service
+    build: "./frontend"
+    networks:
+      - orenda
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+      
+
+  api_gateway:
+    container_name: api-gateway-service
+    build: "./APIGateway"
+    networks:
+      - orenda
+    depends_on:
+      - kafka
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  data_modelling:
+    container_name: data-modelling-service
+    build: "./dataModelling"
+    depends_on:
+      - kafka
+    networks:
+      - orenda
+    restart: unless-stopped
+
+  data_analysis:
+      container_name: data-analysis-service
+      build: "./data_analysis"
+      depends_on:
+        - kafka
+      networks:
+        - orenda
+
+  data_retrieval:
+      container_name: data-retrieval-service
+      build: "./dataRetrieval"
+      depends_on:
+        - kafka
+      networks:
+        - orenda
+      # restart: unless-stopped
+
+  session_management:
+      container_name: session-management-service
+      build: "./SessionManagement"
+      depends_on:
+        - kafka
+      networks:
+        - orenda
+      restart: unless-stopped
+
+  user_management:
+      container_name: user-management-service
+      build: "./userManagement"
+      ports:
+        - "5009:5009"
+      networks:
+        - orenda
+      # restart: unless-stopped
+
+networks:
+  orenda:

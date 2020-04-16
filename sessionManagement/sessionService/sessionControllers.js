@@ -1,75 +1,81 @@
 var Session = require("./models/session_model");
-const producer = require("../config/kafkaConfig").producer;
+// const producer = require("../config/kafkaConfig").producer;
 
-async function createData(msg) {
-  let data = JSON.parse(msg.value);
+async function createData(data) {
   try {
     session = new Session(data);
-
-    await session.save();
+    console.log("data created");
+    session.save();
+    return 200;
   } catch (err) {
     console.log(err.message);
   }
-  
 }
-async function updateState(msg) {
-  let data = JSON.parse(msg.value);
+async function updateState(data) {
   try {
- 
-    filter={"uid":data["uid"]}
-    update={"taskState":"executing"}
-    let session = await Session.updateOne(filter, update,{new:true});
+    filter = { uid: data["uid"] };
 
-    
-  } catch (err) {
-    console.log(err.message);
-  }
-  
-}
-
- async function updateData(msg) {
-  let data = JSON.parse(msg.value);
-  try {
-    filter={"uid":data["uid"]}
-    update={"outputData":data["outputData"],"taskState":"executed"}
-    let session = await Session.updateOne(filter, update,{new:true});
+    if (data["taskState"] == "noScans") update = { taskState: "error" };
+    else update = { taskState: "executing" };
+    Session.updateOne(filter, update, { new: true })
+    .then(data => {
+      console.log("state Updated");
+      return 200;
+    })
+    .catch(error => {
+      throw new Error(error);
+    });
+    return 200;
 
    
     
+  } catch (err) {
+    console.log("err");
+    console.log(err.message);
+  }
+}
+
+async function updateData(data) {
+  try {
+    filter = { uid: data["uid"] };
+    update = { outputData: data["outputData"], taskState: "executed" };
+    Session.updateOne(filter, update, { new: true })
+    .then(data => {
+      console.log("data Updated");
+      return 200;
+    })
+    .catch(error => {
+      throw new Error(error);
+    });
+    return 200;
 
   } catch (err) {
     console.log(err.message);
   }
 }
 
-async function retrieveData(msg) {
-  let data = JSON.parse(msg.value);
-  let sessions= Session.find({'userID': data['userID']}, function(err, documents) {
-    
-    data={"sessions":documents,
-      "userID":data['userID'],
-      "uid":data['uid']
-
-      
-    }
-    sendData(data, 'apiGatewayConsumerF');
-  });
-  
+async function retrieveData(req, res) {
+  console.log("/session");
+  data = req.body;
+  console.log(req.body);
+  let documents = await Session.find({ userID: data["userID"] });
+  data = { sessions: documents, userID: data["userID"], uid: data["uid"] };
+  res.send(data);
+  // sendData(data, "apiGatewayConsumerF");
 }
 
-
-function sendData(msg, topicName) {
-  msg = JSON.stringify(msg);
-  let payloads = [
-    {
-      topic: topicName,
-      messages: msg
-    }
-  ];
-  producer.send(payloads, (error, data) => {
-    if (error) {
-      console.log(error);
-    } 
-  });
-}
-module.exports = { updateData, retrieveData, createData,updateState };
+// function sendData(msg, topicName) {
+//   msg = JSON.stringify(msg);
+//   let payloads = [
+//     {
+//       topic: topicName,
+//       messages: msg
+//     }
+//   ];
+//   producer.send(payloads, (error, data) => {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// }
+module.exports = { updateData, retrieveData, createData, updateState };

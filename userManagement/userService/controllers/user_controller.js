@@ -1,8 +1,9 @@
 var User = require("../models/user-model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+let config = require("../../config/config");
 
-exports.register = async function login(req, res, next) {
+exports.register = async function register(req, res, next) {
   const { firstName, lastName, email, password } = req.body;
 
   try {
@@ -30,7 +31,7 @@ exports.register = async function login(req, res, next) {
 
     jwt.sign(
       payload,
-      process.env.SECRET,
+      config.DATABASE.SECRET,
       {
         expiresIn: 10000
       },
@@ -47,7 +48,7 @@ exports.register = async function login(req, res, next) {
   }
 };
 
-exports.login = async function register(req, res, next) {
+exports.login = async function login(req, res, next) {
   const { email, password } = req.body;
   try {
     let user = await User.findOne({
@@ -74,7 +75,7 @@ exports.login = async function register(req, res, next) {
 
     jwt.sign(
       payload,
-      process.env.SECRET,
+      config.DATABASE.SECRET,
       {
         expiresIn: 3600
       },
@@ -97,3 +98,6 @@ exports.login = async function register(req, res, next) {
 // exports.reset = function reset(req, res, next) {
 
 // };
+exports.serverStarted = async function serverStarted(req, res, next) {
+res.send("Server Started")
+}

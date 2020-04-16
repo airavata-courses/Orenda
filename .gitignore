@@ -85,8 +85,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-# PyBuilder
-target/
 
 # pyenv
 .python-version
@@ -191,7 +189,7 @@ instance/*
 .mtj.tmp/
 
 # Package Files #
-*.jar
+
 *.war
 *.nar
 *.ear
