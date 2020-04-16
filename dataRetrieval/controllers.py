@@ -18,8 +18,13 @@ def produce(data,client):
         with (client.topics['dataModellingConsumerF']).get_sync_producer() as producer:
             print("task sent to dataModellingConsumerF")
             producer.produce((bytes(json.dumps(body),'utf-8')))
+    else:
+        body = {"inputData":{"Month":Month,"Day":Day,"Year":Year,"Radar":Radar},"userID":userID,"uid":uid,"taskState":"noScans"}
+        with (client.topics['sessionManagementConsumerF']).get_sync_producer() as producer:
+            print("task sent to sessionManagementConsumerF")
+            producer.produce((bytes(json.dumps(body),'utf-8')))
 
-
+        
 
     
 
