@@ -21,6 +21,7 @@ export default class SessionView extends Component {
       };
       dashService.sessions(data).then(res => {
         if (res.status === 200) {
+          console.log(res.data.sessions )
           this.setState({ sessions: res.data.sessions });
           
         }

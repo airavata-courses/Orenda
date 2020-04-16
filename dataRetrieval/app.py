@@ -13,6 +13,7 @@ consumer =  client.topics['dataRetrievalConsumerF'].get_balanced_consumer(consum
 for message in consumer:
     if message is not None:
         print("task received at dataRetrievalConsumerF")
+        print(message)
         data=json.loads((message.value))
         produce(data,client)
         
