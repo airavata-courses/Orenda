@@ -4,6 +4,10 @@ apiVersion: apps/v1
 metadata:
   name: kafka-broker0
 spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
