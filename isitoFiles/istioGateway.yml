@@ -23,19 +23,8 @@ spec:
   gateways:
   - orenda-gateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    - uri:
-        prefix: /login
-    - uri:
-        prefix: /user
-    - uri:
-        exact: /api
-    - uri:
-        prefix: /sessionService
-    route:
-    - destination:
-        host: frontend-service
-        port:
-          number: 3002
+    - route:
+      - destination:
+          port:
+            number: 80
+          host: ui.default.svc.cluster.local
