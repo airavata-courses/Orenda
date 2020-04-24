@@ -26,5 +26,5 @@ spec:
     - route:
       - destination:
           port:
-            number: 3002
-          host: ui.default.svc.cluster.local
+            number: 3000
+          host: frontend-service
