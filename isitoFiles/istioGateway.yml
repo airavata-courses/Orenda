@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: orenda-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: orenda
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - orenda-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    - uri:
+        prefix: /login
+    - uri:
+        prefix: /user
+    - uri:
+        exact: /api
+    - uri:
+        prefix: /sessionService
+    route:
+    - destination:
+        host: frontend-service
+        port:
+          number: 3002
