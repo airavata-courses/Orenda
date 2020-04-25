@@ -36,6 +36,8 @@
           containers:
           - name: data-analysis
             image: orenda15/data_analysis:bc65dec6b31c39303aa17bda39dcb091a8d0ecdf
+            ports:
+            - containerPort: 3004
             
     
     
