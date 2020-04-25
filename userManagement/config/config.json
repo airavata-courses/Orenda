@@ -1,5 +1,5 @@
 {
-    "PORT":5009,
+    "PORT":3003,
     "DATABASE":{
         "NAME":"orendaDB",
         "USERNAME":"orendaUser",

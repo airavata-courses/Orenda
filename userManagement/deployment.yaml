@@ -37,5 +37,5 @@ spec:
       - name: user-management
         image: orenda15/user_management:369d9b8dc16c52bbacff7dbe495fef0a8932dd5e
         ports:
-        - containerPort: 5009
+        - containerPort: 3003
 
