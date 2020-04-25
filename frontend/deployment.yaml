@@ -7,7 +7,7 @@ spec:
   selector:
     app: frontend
   ports:
-    - protocol: "TCP"
+    # - protocol: "TCP"
     - name: http
       # Port accessible inside cluster
       port: 3002
