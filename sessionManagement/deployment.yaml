@@ -10,7 +10,7 @@
       # - protocol: "TCP"
         - name: http
         # Port accessible inside cluster
-        port: 3007
+          port: 3007
         # Port to forward to inside the pod
       #   targetPort: 5001
       #   # Port accessible outside cluster
