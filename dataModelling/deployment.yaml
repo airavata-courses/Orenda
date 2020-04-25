@@ -7,14 +7,15 @@ spec:
   selector:
     app: data-modelling
   ports:
-    - protocol: "TCP"
+    # - protocol: "TCP"
+    - name: http
       # Port accessible inside cluster
       port: 3005
       # Port to forward to inside the pod
-      targetPort: 5011
-      # Port accessible outside cluster
-      nodePort: 30005
-  type: LoadBalancer
+  #     targetPort: 5011
+  #     # Port accessible outside cluster
+  #     nodePort: 30005
+  # type: LoadBalancer
  
  
 ---
@@ -34,6 +35,6 @@ spec:
     spec:
       containers:
       - name: data-modelling
-        image: orenda15/data_modelling
+        image: orenda15/data_modelling:c7d445dbc31af7d1eae53f9f57997acd17de31f2
         ports:
         - containerPort: 5011
