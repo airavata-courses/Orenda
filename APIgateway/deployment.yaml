@@ -37,5 +37,5 @@ spec:
       - name: api-gateway
         image: orenda15/api_gateway:88dbeb83ab26ee8c40e2a67d5d1f56d77ce1827c
         ports:
-        - containerPort: 5000
+        - containerPort: 3001
 
