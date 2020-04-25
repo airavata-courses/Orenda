@@ -7,14 +7,15 @@ spec:
   selector:
     app: api-gateway
   ports:
-    - protocol: "TCP"
+    # - protocol: "TCP"
+    - name: http
       # Port accessible inside cluster
       port: 3001
       # Port to forward to inside the pod
-      targetPort: 5000
-      # Port accessible outside cluster
-      nodePort: 30001
-  type: LoadBalancer
+  #     targetPort: 5000
+  #     # Port accessible outside cluster
+  #     nodePort: 30001
+  # type: LoadBalancer
  
  
 ---
@@ -34,7 +35,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: orenda15/api_gateway
+        image: orenda15/api_gateway:88dbeb83ab26ee8c40e2a67d5d1f56d77ce1827c
         ports:
         - containerPort: 5000
 
