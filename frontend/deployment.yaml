@@ -37,5 +37,5 @@ spec:
       - name: frontend
         image: orenda15/frontend:b0cb01411ba425f247fe74b7607bf20daf8ef8e5
         ports:
-        - containerPort: 3000
+        - containerPort: 3002
 
