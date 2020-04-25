@@ -12,5 +12,4 @@ spec:
       protocol: TCP
   selector:
     app: kafka
-    id: "0"
   type: LoadBalancer

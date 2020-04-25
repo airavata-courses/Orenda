@@ -1,14 +1,17 @@
 ---
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: kafka-broker0
 spec:
+  selector:
+    matchLabels:
+      app: kafka
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
         app: kafka
-        id: "0"
     spec:
       containers:
       - name: kafka
