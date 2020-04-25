@@ -16,8 +16,8 @@ require("./sessionService/routes")(app);
 
 InitiateMongoServer();
 
-app.listen(5001, () => {
-  console.log("session listening on port 5001");
+app.listen(3007, () => {
+  console.log("session listening on port 3007");
 });
 consumer.on("message", function(message) {
   console.log("received at session from " + message.topic + message.value);

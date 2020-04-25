@@ -37,7 +37,7 @@
           - name: session-management
             image: orenda15/session_management:35be8e6d50720a961b9829c10235a17903cd62a6
             ports:
-            - containerPort: 5001
+            - containerPort: 3007
             
     
     
