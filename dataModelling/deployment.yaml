@@ -37,4 +37,4 @@ spec:
       - name: data-modelling
         image: orenda15/data_modelling:c7d445dbc31af7d1eae53f9f57997acd17de31f2
         ports:
-        - containerPort: 5011
+        - containerPort: 3005
