@@ -8,13 +8,14 @@ spec:
     app: frontend
   ports:
     - protocol: "TCP"
+    - name: http
       # Port accessible inside cluster
       port: 3002
       # Port to forward to inside the pod
-      targetPort: 3000
-      # Port accessible outside cluster
-      nodePort: 30002
-  type: LoadBalancer
+  #     targetPort: 3000
+  #     # Port accessible outside cluster
+  #     nodePort: 30002
+  # type: LoadBalancer
  
  
 ---
@@ -34,7 +35,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: orenda15/frontend
+        image: orenda15/frontend:b0cb01411ba425f247fe74b7607bf20daf8ef8e5
         ports:
         - containerPort: 3000
 
