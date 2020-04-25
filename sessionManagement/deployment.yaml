@@ -7,14 +7,15 @@
       selector:
         app: session-management
       ports:
-      - protocol: "TCP"
+      # - protocol: "TCP"
+        - name: http
         # Port accessible inside cluster
         port: 3007
         # Port to forward to inside the pod
-        targetPort: 5001
-        # Port accessible outside cluster
-        nodePort: 30007
-      type: LoadBalancer
+      #   targetPort: 5001
+      #   # Port accessible outside cluster
+      #   nodePort: 30007
+      # type: LoadBalancer
      
      
 ---
@@ -34,7 +35,7 @@
         spec:
           containers:
           - name: session-management
-            image: orenda15/session_management
+            image: orenda15/session_management:35be8e6d50720a961b9829c10235a17903cd62a6
             ports:
             - containerPort: 5001
             
