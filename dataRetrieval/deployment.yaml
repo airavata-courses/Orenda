@@ -7,15 +7,16 @@ spec:
   selector:
     app: data-retrieval
   ports:
-    - protocol: "TCP"
+    # - protocol: "TCP"
+    - name: http
       # Port accessible inside cluster
       port: 3006
       # Port to forward to inside the pod
-      targetPort: 5012
-      # Port accessible outside cluster
-      nodePort: 30006
-  type: LoadBalancer
-  type: LoadBalancer
+  #     targetPort: 5012
+  #     # Port accessible outside cluster
+  #     nodePort: 30006
+  # type: LoadBalancer
+  # type: LoadBalancer
  
  
 ---
@@ -35,4 +36,4 @@ spec:
     spec:
       containers:
       - name: data-retrieval
-        image: orenda15/data_retrieval
+        image: orenda15/data_retrieval:d10ef75851ac0d59edfda56b34dc3482d5cb1fc2
