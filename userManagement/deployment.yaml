@@ -7,14 +7,15 @@ spec:
   selector:
     app: user-management
   ports:
-    - protocol: "TCP"
+    # - protocol: "TCP"
+    - name: http
       # Port accessible inside cluster
       port: 3003
       # Port to forward to inside the pod
-      targetPort: 5009
-      # Port accessible outside cluster
-      nodePort: 30003
-  type: LoadBalancer
+  #     targetPort: 5009
+  #     # Port accessible outside cluster
+  #     nodePort: 30003
+  # type: LoadBalancer
  
  
 ---
@@ -34,7 +35,7 @@ spec:
     spec:
       containers:
       - name: user-management
-        image: orenda15/user_management
+        image: orenda15/user_management:369d9b8dc16c52bbacff7dbe495fef0a8932dd5e
         ports:
         - containerPort: 5009
 
