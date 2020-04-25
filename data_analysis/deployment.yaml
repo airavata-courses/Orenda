@@ -7,14 +7,15 @@
       selector:
         app: data-analysis
       ports:
-      - protocol: "TCP"
+      # - protocol: "TCP"
+        - name: http
         # Port accessible inside cluster
-        port: 3004
+          port: 3004
         # Port to forward to inside the pod
-        targetPort: 5010
+        # targetPort: 5010
         # Port accessible outside cluster
-        nodePort: 30004
-      type: LoadBalancer
+      #   nodePort: 30004
+      # type: LoadBalancer
      
      
 ---
@@ -34,7 +35,7 @@
         spec:
           containers:
           - name: data-analysis
-            image: orenda15/data_analysis
+            image: orenda15/data_analysis:bc65dec6b31c39303aa17bda39dcb091a8d0ecdf
             
     
     
