@@ -12,7 +12,7 @@ after_success:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 - docker build -t orenda15/api_gateway:$TRAVIS_COMMIT .
 - docker push orenda15/api_gateway:$TRAVIS_COMMIT
-- chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/istioFiles/canaryUpdate.sh api-gateway $TRAVIS_COMMIT"
+- chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "sudo ~/istioFiles/canaryUpdate.sh api-gateway $TRAVIS_COMMIT"
 
 branches:
   only:
