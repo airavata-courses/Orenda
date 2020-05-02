@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-analysis
+  labels:
+    app: data-analysis
+spec:
+  minReadySeconds: 5
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: data-analysis
+  template:
+    metadata:
+      labels:
+        app: data-analysis
+    spec:
+      containers:
+      - name: data-analysis
+        image: orenda15/data_analysis:242b58a0b0ffc5ab53f076b9a8206c88b1c4120e
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3004
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
