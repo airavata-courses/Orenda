@@ -12,11 +12,11 @@ after_success:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 - docker build -t orenda15/api_gateway:$TRAVIS_COMMIT .
 - docker push orenda15/api_gateway:$TRAVIS_COMMIT
-- chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/deployFiles/deployApi.sh $TRAVIS_COMMIT"
+- chmod 600 ../deploy_key && ssh -o StrictHostKeyChecking=no -i ../deploy_key ubuntu@149.165.170.101 "~/istioFiles/canaryUpdated.sh api-gateway $TRAVIS_COMMIT"
 
 branches:
   only:
-  - deployApi
+  - istioApi
 env:
   global:
   - secure: PjQw1TFLJqMQjjSill+zCcAe9Hsd0s/+xeCcsHfrcFiNHm3SfmPIEsS8g7s/XrS/zquXA8NFKUoDhLO7SRQjnSVVFFmPHFcOzQdSs9IgovS2ykuB0gtp/4EXFPA+xLAW2vq0s6ESjTj6Bbx5xQHiHKrHkQqZZhoS9C/ZgNk9yiAtQUDOLjb70+jysa50bUwPFhyqjs0iyWKuZ77Y0hkdo6Xde0m8otEpiD09rHWFzR9J1DISQfGtWpFYcaQzQPP2YtJ/jKsT0chJDNJEcSu2tz9TlJQb5yAnlnaDEHF53rQ4/Y9hrjDdVJFB5mNrNoHyVwDkDMY82Cl4BkKpZOhxCtd/zX63kDloLy1Ymm92Z03j9tAd7S+UunfzVCY98S5+8zy/80bNGr5sxyUZCXjFRU2KrSiBPt5pq7AXoz2Xdf8S1mB85315oTwG3k2vzDc20e2JjcHNtodggfJMUh5WLljuj0QBSdX9K/MUIfmkNxmtwvOicIRDVQ0MtNHLuttC7bbh/RSFbhaj+2DoHKLPXYeZi4GpmLrpOsdrgNhmCPxp9xS2ghlDe/6KLtxkq6ovnk3HaUaIWZwv3ucAfAzqh0/8GzVHi+wxGQ9ZcMCxQGcLuyGbD7cutG7iBHEZMO8CyMFfEzIEpQ6ICTaPiOaGqmXKQt6rRJFMMBr0has2wkA=
