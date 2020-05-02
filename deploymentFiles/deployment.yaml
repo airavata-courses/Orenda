@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: user-management
-        image: orenda15/user_management:7db4d1ae7188df8194135c000f3995b886c3aacf
+        image: orenda15/user-management:7db4d1ae7188df8194135c000f3995b886c3aacf
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
