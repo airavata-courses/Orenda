@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: data-modelling
-        image: orenda15/data_modelling:e84182d37ab15b7ad3cfe13754f9b382a01e5e7e
+        image: orenda15/data-modelling:e84182d37ab15b7ad3cfe13754f9b382a01e5e7e
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
