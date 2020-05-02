@@ -1,0 +1,48 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: api-gateway
+  namespace: default
+spec:
+  provider: istio
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api-gateway
+  progressDeadlineSeconds: 60
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: api-gateway
+  service:
+    name: api-gateway
+    port: 3001
+    targetPort: 3001
+    # portName: http
+    portDiscovery: true
+    timeout: 5s
+    # gateways:
+    # - orenda-gateway
+    # hosts:
+    # - '*'
+  skipAnalysis: false
+  analysis:
+    interval: 10s
+    threshold: 10
+    maxWeight: 50
+    stepWeight: 5
+    # metrics:
+    # - name: request-success-rate
+    #   thresholdRange:
+    #     min: 99
+    #   interval: 1m
+    # - name: latency
+    #   templateRef:
+    #       name: latency
+    #       namespace: istio-system
+    #   thresholdRange:
+    #       max: 500
+    #   interval: 1m
+   
+
+   
