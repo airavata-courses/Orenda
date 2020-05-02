@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: orenda15/api_gateway:8d707fba79a2ad396d8619a9463f358dda5acc82
+        image: orenda15/api-gateway:9273f3770801ae406539d4ea819c060e97af10fd
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
