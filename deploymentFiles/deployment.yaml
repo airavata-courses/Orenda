@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: session-management
-        image: orenda15/session_management:1233927f05224615f4e8e2cabcbad4dd5a6068ae
+        image: orenda15/session-management:1233927f05224615f4e8e2cabcbad4dd5a6068ae
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
