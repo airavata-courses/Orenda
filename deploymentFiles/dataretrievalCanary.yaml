@@ -1,0 +1,48 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: data-retrieval
+  namespace: default
+spec:
+  provider: istio
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: data-retrieval
+  progressDeadlineSeconds: 60
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: data-retrieval
+  service:
+    name: data-retrieval
+    port: 3006
+    targetPort: 3006
+    # portName: http
+    portDiscovery: true
+    timeout: 5s
+    # gateways:
+    # - orenda-gateway
+    # hosts:
+    # - '*'
+  skipAnalysis: false
+  analysis:
+    interval: 10s
+    threshold: 10
+    maxWeight: 50
+    stepWeight: 5
+    # metrics:
+    # - name: request-success-rate
+    #   thresholdRange:
+    #     min: 99
+    #   interval: 1m
+    # - name: latency
+    #   templateRef:
+    #       name: latency
+    #       namespace: istio-system
+    #   thresholdRange:
+    #       max: 500
+    #   interval: 1m
+   
+
+   
