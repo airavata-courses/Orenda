@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session-management
+  labels:
+    app: session-management
+spec:
+  minReadySeconds: 5
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: session-management
+  template:
+    metadata:
+      labels:
+        app: session-management
+    spec:
+      containers:
+      - name: session-management
+        image: orenda15/session_management:1233927f05224615f4e8e2cabcbad4dd5a6068ae
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3007
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
