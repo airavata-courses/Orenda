@@ -21,10 +21,10 @@ spec:
     # portName: http
     portDiscovery: true
     timeout: 5s
-    gateways:
-    - orenda-gateway
-    hosts:
-    - '*'
+    # gateways:
+    # - orenda-gateway
+    # hosts:
+    # - '*'
   skipAnalysis: false
   analysis:
     interval: 10s
