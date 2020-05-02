@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: data-retrieval
-        image: orenda15/data_retrieval:9a30ef79fc57e4200423ea62e72093117afa716d
+        image: orenda15/data-retrieval:9a30ef79fc57e4200423ea62e72093117afa716d
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
