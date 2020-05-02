@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-modelling
+  labels:
+    app: data-modelling
+spec:
+  minReadySeconds: 5
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: data-modelling
+  template:
+    metadata:
+      labels:
+        app: data-modelling
+    spec:
+      containers:
+      - name: data-modelling
+        image: orenda15/data_modelling:e84182d37ab15b7ad3cfe13754f9b382a01e5e7e
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3005
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
