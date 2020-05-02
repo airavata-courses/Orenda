@@ -20,7 +20,7 @@ spec:
     targetPort: 3001
     portDiscovery: true
     timeout: 5s
-    gateways:
+    # gateways:
     # - orenda-gateway
     # hosts:
     # - '*'
