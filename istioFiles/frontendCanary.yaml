@@ -1,0 +1,36 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: frontend
+  namespace: default
+spec:
+  provider: istio
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  progressDeadlineSeconds: 60
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: frontend
+  service:
+    name: frontend
+    port: 3002
+    targetPort: 3002
+    portDiscovery: true
+    timeout: 5s
+    gateways:
+    - orenda-gateway
+    hosts:
+    - '*'
+  skipAnalysis: false
+  analysis:
+    interval: 10s
+    threshold: 10
+    maxWeight: 50
+    stepWeight: 5
+
+   
+
+   
