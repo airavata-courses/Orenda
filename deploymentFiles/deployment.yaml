@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: data-analysis
-        image: orenda15/data_analysis:242b58a0b0ffc5ab53f076b9a8206c88b1c4120e
+        image: orenda15/data-analysis:242b58a0b0ffc5ab53f076b9a8206c88b1c4120e
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
