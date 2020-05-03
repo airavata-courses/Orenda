@@ -41,12 +41,12 @@ spec:
   apiVersion: "security.istio.io/v1beta1"
   kind: "PeerAuthentication"
   metadata:
-    name: "example-peer-policy"
-    namespace: "foo"
+    name: data-retrieval-authentication
+    
   spec:
     selector:
       matchLabels:
-        app: reviews
+        app: data-retrieval
     mtls:
       mode: STRICT
               
