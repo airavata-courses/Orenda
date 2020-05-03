@@ -34,7 +34,7 @@ EOF
 
 
 
-kubectl apply -f ./istio-gateway.yaml
+kubectl apply -f https://raw.githubusercontent.com/airavata-courses/Orenda/istioFiles/yaml-files/istio-gateway.yaml
 
 export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
