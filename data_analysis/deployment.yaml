@@ -35,6 +35,20 @@
           containers:
           - name: data-analysis
             image: orenda15/data_analysis
+
+---
+
+apiVersion: "security.istio.io/v1beta1"
+kind: "PeerAuthentication"
+metadata:
+  name: "example-peer-policy"
+  namespace: "foo"
+spec:
+  selector:
+    matchLabels:
+      app: reviews
+  mtls:
+    mode: STRICT
             
     
     

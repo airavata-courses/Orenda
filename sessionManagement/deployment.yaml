@@ -37,6 +37,21 @@
             image: orenda15/session_management
             ports:
             - containerPort: 5001
+
+
+---
+  apiVersion: "security.istio.io/v1beta1"
+  kind: "PeerAuthentication"
+  metadata:
+    name: "example-peer-policy"
+    namespace: "foo"
+  spec:
+    selector:
+      matchLabels:
+        app: reviews
+    mtls:
+      mode: STRICT
+              
             
     
     

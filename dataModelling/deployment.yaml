@@ -37,3 +37,18 @@ spec:
         image: orenda15/data_modelling
         ports:
         - containerPort: 5011
+
+---
+
+  apiVersion: "security.istio.io/v1beta1"
+  kind: "PeerAuthentication"
+  metadata:
+    name: "example-peer-policy"
+    namespace: "foo"
+  spec:
+    selector:
+      matchLabels:
+        app: reviews
+    mtls:
+      mode: STRICT
+              

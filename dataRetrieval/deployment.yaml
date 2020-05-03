@@ -36,3 +36,17 @@ spec:
       containers:
       - name: data-retrieval
         image: orenda15/data_retrieval
+---
+
+  apiVersion: "security.istio.io/v1beta1"
+  kind: "PeerAuthentication"
+  metadata:
+    name: "example-peer-policy"
+    namespace: "foo"
+  spec:
+    selector:
+      matchLabels:
+        app: reviews
+    mtls:
+      mode: STRICT
+              
