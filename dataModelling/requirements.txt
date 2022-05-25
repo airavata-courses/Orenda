@@ -38,7 +38,7 @@ Pillow==6.2.1
 Pint==0.10.1
 pooch==1.0.0
 pyimgur==0.6.0
-PyJWT==1.7.1
+PyJWT==2.4.0
 pykafka==2.8.0
 pymongo==3.10.1
 pyparsing==2.4.6
